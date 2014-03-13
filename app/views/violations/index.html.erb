@@ -1,0 +1,38 @@
+<% v = Violation.find_by(id: @vio_id) %>
+<html>
+  <head>
+     <link href='/profiles.css' rel='stylesheet' type='text/css'>
+  </head>
+    <title>
+      <%="#{v.vio_code}" %>
+    </title>
+  </head>
+    <body>
+    <div class="vio_form">
+      <%= erb :form %>
+    </div>
+    <div class="_page">
+      <h2>Violation <%= v.vio_code %></h2>
+      <h3><%= v.description %></h3>
+      <% if v.critical_vio == true %>
+      <h1 class="red">This violation is critical</h1>
+      <% end %>
+    </div>
+    <div class="_list">
+
+      <h2>Restaurants with this violation</h2>
+      <% hash = v.restaurants.group_by {|r| r.zip} %>
+      <% hash.sort.each do |k, v|%>
+      <br/>
+      <span class= "bold"><a href="/<%=k%>"><%= k %></a><br/></span>
+        <%v.each do |r|%>
+          <a href="/restaurant/<%=r.id%>"><%=r.name%></a><br/>
+        <%end%>
+      <%end%>
+      </ul>
+    </div>
+
+
+    
+  </body>
+</html>

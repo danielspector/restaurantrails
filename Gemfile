@@ -32,6 +32,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'titleize'
+gem 'geocoder'
+gem 'thin'
+gem 'rspec'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

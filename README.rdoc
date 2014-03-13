@@ -1,28 +1,14 @@
-== README
+---
+tags: sinatra, activerecord, post
+language: ruby, HTML, Javascript
+---
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# HELP!
 
-Things you may want to cover:
+NYC non-"A" restaurant finder
 
-* Ruby version
+This webapp uses NYC open data to construct a database, finding data on all non-"A" restaurants.
+It presents the data many different ways, including by zip code, by individual restaurant, by
+cuisine, or by violation.  Sinatra is used as the framework and ActiveRecord as the ORM.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Start by typing either ```rackup``` or ```shotgun``` in your console.

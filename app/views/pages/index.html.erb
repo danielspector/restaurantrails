@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    HELP! Bad Restaurants in New York City
+  </title>  
+  <link href='/index.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <img src="/img/help_logo.jpg" alt="Our logo">
+  <br><br>
+  <h2 id="error" ><%= @error ? "INVALID OR UNKNOWN ENTRY!  TRY AGAIN!" : "" %></h2> 
+  <%= erb :form %>
+</body>
+</html>
