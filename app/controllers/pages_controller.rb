@@ -1,8 +1,8 @@
-class PagesController < AppController
-  get '/' do
+class PagesController < ApplicationController
+  def index
     session[:error] ? @error = true : @error = false
     session[:error] = false
-    erb :index
+    render :index
   end
 
   post '/' do

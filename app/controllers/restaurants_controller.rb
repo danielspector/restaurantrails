@@ -1,4 +1,4 @@
-class RestaurantsController < AppController
+class RestaurantsController < ApplicationController
 
   get '/restaurant/:rest_id' do
     @rest_id = params[:rest_id]

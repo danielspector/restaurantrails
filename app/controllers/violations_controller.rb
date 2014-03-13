@@ -1,4 +1,4 @@
-class ViolationsController < AppController
+class ViolationsController < ApplicationController
 
   get '/violation/:vio_id' do
     @vio_id = params[:vio_id]

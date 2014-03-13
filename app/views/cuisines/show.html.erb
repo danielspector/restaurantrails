@@ -1,10 +1,10 @@
-<% c = Cuisine.find_by(id: @cuis_id) %>
+
 <html>
   <head>
      <link href='/profiles.css' rel='stylesheet' type='text/css'>
   </head>
     <title>
-      <%="#{c.description}" %>
+      <%=@cuisine.description%>
     </title>
   </head>
   
@@ -13,10 +13,10 @@
       <%= erb :form %>
     </div>
     <div class="_page">
-      <h2>Cuisine: <%= c.description %></h2>
+      <h2>Cuisine: <%= @cuisine.description %></h2>
 
       <h2>Restaurants</h2>
-      <% hash = c.restaurants.group_by {|r| r.zip} %>
+      <% hash = @cuisine.restaurants.group_by {|r| r.zip} %>
       <% hash.sort.each do |k, v|%>
       <br/>
       <span class= "bold"><a href="/<%=k%>"><%= k %></a><br/></span>

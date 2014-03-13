@@ -1,11 +1,18 @@
-class CuisinesController < AppController
+class CuisinesController < ApplicationController
+  before_action :set_cuisine, only: [:show]
+
   def show
-    @cuis_id = params[:id]
-    if Cuisine.exists?(id: @cuis_id)
-      session[:error] = false
-    else
-      session[:error] = true
-      redirect to(pages_path)
-    end
+    # if Cuisine.exists?(id: @cuis_id)
+    #   session[:error] = false
+    # else
+    #   session[:error] = true
+    #   redirect_to(pages_path)
+    # end
   end  
+
+  private
+
+  def set_cuisine
+    @cuisine = Cuisine.find(params[:id]) 
+  end
 end

@@ -12,4 +12,3 @@ task :seed => [:environment] do
     Cuisine.seed
     RestaurantCuisine.seed
   end
-end
