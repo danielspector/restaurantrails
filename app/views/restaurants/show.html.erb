@@ -44,44 +44,41 @@
       }
       google.maps.event.addDomListener(window, 'load', initialize);
   </script>
-  </head>
-    <body>
+</head>
+  <body>
 
-    <div id="map-canvas"></div>
+  <div id="map-canvas"></div>
+  
+  <div class="_page rest_prof">
+    <h2><%= @restaurant.name %></h2>
+    <h3><%= @restaurant.phone_num %></h3>
+    <!-- COME BACK --> 
+    <h3><%= link_to @restaurant.address, restaurant_path %></h3>
+    <% @restaurant.cuisines.each do |c| %>
+    <h3><%= link_to c.description, cuisine_path(c) %></h3>
+    <% end %>
+    <%= render "pages/form" %>
+  </div>
+
+
+  <div class="_list rest_list">
     
-    <div class="_page rest_prof">
-      <h2><%= @restaurant.name %></h2>
-      <h3><%= @restaurant.phone_num %></h3>
-      <!-- COME BACK --> 
-      <h3><%= link_to @restaurant.address, restaurant_path %></h3>
-      <% @restaurant.cuisines.each do |c| %>
-      <h3><%= link_to c.description, cuisine_path %></h3>
+    <h3><%= 
+      if @restaurant.grade == "B"
+        image_tag "b.jpg"
+      elsif @restaurant.grade == "C"
+        image_tag "c.jpg"
+      else
+        image_tag "pending.jpg"
+      end %>
+      Violation points: <%= @restaurant.score %>
+    </h3>
+    <ol>
+      <% @restaurant.violations.each do |vio| %>
+        <li><%= link_to vio.description, violation_path(vio) %></li>
       <% end %>
-      <br/>
-      <br/>
-      <%= render "pages/form" %>
-    </div>
+    </ol>
+  </div>
+<%= link_to "Restaurant Index", restaurants_path %>
 
-
-    <br/>
-    <div class="_list rest_list">
-      
-      <h3><%= 
-        if @restaurant.grade == "B"
-          image_tag "b.jpg"
-        elsif @restaurant.grade == "C"
-          image_tag "c.jpg"
-        else
-          image_tag "pending.jpg"
-        end %>
-        Violation points: <%= @restaurant.score %>
-      </h3>
-      <ol>
-        <% @restaurant.violations.each do |vio| %>
-          <li><%= link_to vio.description, violation_path %></li>
-        <% end %>
-      </ol>
-    </div>
-  <%= link_to "Restaurant Index", restaurants_path %>
-
-  </body>
+</body>

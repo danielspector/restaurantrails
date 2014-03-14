@@ -26,6 +26,12 @@ class Restaurant < ActiveRecord::Base
     Restaurant.where(zip: zip_code)
   end
 
+  def all_zips
+    self.class.all.collect do |r|
+      r.zip
+    end
+  end
+
   def address
     @address = "#{self.building_number} #{self.street_name}, #{self.zip}"
     @address

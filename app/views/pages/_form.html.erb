@@ -1,4 +1,7 @@
-  <form action='/' method="POST" autocomplete="off">
-    <label for="zip">Where are you eating?</label><br />
-    <input type="text" id ="zip" name="zip" placeholder="Zipcode"><br />
-  </form>
+<%#= form_for @search do |f|%>
+  <!-- <p>Where are you eating?</p><br> -->
+  <%#= f.text_field :zip, :placeholder => "Zipcode" %>
+  <%#= f.text_field :restaurant_name, :placeholder => "Restaurant Name" %>
+  <%#= f.text_field :cuisine, :placeholder => "Cuisine" %>
+  <%#= f.submit %>
+<%# end %>
