@@ -68,11 +68,11 @@
       
       <h3><%= 
         if @restaurant.grade == "B"
-          "<img src=\"/img/b.jpg\" alt=\"B\">"
+          image_tag "b.jpg"
         elsif @restaurant.grade == "C"
-          "<img src=\"/img/c.jpg\" alt=\"C\">"
+          image_tag "c.jpg"
         else
-          "<img src=\"/img/pending.jpg\" alt=\"Pending\">"
+          image_tag "pending.jpg"
         end %>
         Violation points: <%= @restaurant.score %>
       </h3>
