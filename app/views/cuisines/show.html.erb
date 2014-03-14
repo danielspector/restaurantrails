@@ -19,7 +19,7 @@
     <br/>
     <span class= "bold"><a href="/<%=k%>"><%= k %></a><br/></span>
       <%v.each do |r|%>
-        <%= link_to r.name, restaurant_path %><br/>
+        <%= link_to r.name, restaurant_path(r) %><br/>
       <%end%>
     <%end%>
     </ul>

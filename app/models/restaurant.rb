@@ -4,6 +4,20 @@ class Restaurant < ActiveRecord::Base
   has_many :restaurant_cuisines
   has_many :cuisines, through: :restaurant_cuisines
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
+  before_save :slugify
+
+  def slugify
+    self.slug = self.slug_arg
+  end
+  
+  def slug_arg
+    self.name.downcase.gsub(" ", "-")
+  end
+
+
   def phone_num
     self.phone.to_s.strip.split('').insert(3, "-").insert(7, "-").join()
   end

@@ -1,8 +1,5 @@
 class CuisinesController < ApplicationController
   before_action :set_cuisine, only: [:show]
-  extend FriendlyId
-
-  friendly_id :description
 
   def show
     # if Cuisine.exists?(id: @cuis_id)
@@ -20,6 +17,6 @@ class CuisinesController < ApplicationController
   private
 
   def set_cuisine
-    @cuisine = Cuisine.find(params[:id]) 
+    @cuisine = Cuisine.friendly.find(params[:id]) 
   end
 end
