@@ -2,7 +2,7 @@
 <head>
  <link href='/profiles.css' rel='stylesheet' type='text/css'>
     <title>
-      <%= "#{r.name} -- HELP! Bad Restaurants in New York City" %>
+      <%= "#{@restaurant.name} -- HELP! Bad Restaurants in New York City" %>
     </title>
   <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALUMEVvLlZ-4U2LSSVm3LhwtjbIO223qY&sensor=false">
@@ -52,13 +52,13 @@
     <div class="_page rest_prof">
       <h2><%= @restaurant.name %></h2>
       <h3><%= @restaurant.phone_num %></h3>
-      <a href="/<%= r.zip %>"><h3><%= @restaurant.address %></h3></a>
+      <h3><%= link_to @restaurant.address, zip_path %></h3>
       <% @restaurant.cuisines.each do |c| %>
-      <a href="/cuisine/<%=c.id%>"><h3><%= c.description %></h3></a>
+      <h3><%= link_to c.description, cuisine_path %></h3>
       <% end %>
       <br/>
       <br/>
-      <%= erb :form %>
+      <%= render 'form' %>
     </div>
 
 
@@ -68,7 +68,7 @@
       <h3><%= 
         if @restaurant.grade == "B"
           "<img src=\"/img/b.jpg\" alt=\"B\">"
-        elsif r.grade == "C"
+        elsif @restaurant.grade == "C"
           "<img src=\"/img/c.jpg\" alt=\"C\">"
         else
           "<img src=\"/img/pending.jpg\" alt=\"Pending\">"
@@ -77,7 +77,7 @@
       </h3>
       <ol>
         <% @restaurant.violations.each do |vio| %>
-          <li><a href="/violation/<%=vio.id%>"><%= vio.description %></a></li>
+          <li><%= link_to vio.description, violation_path %></li>
         <% end %>
       </ol>
     </div>

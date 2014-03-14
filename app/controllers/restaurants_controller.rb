@@ -2,13 +2,13 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show]
 
   def show
-    if @restaurant
-      session[:error] = false
-      erb :rest_page
-    else
-      session[:error] = true
-      redirect to("/")
-    end
+    # if @restaurant
+    #   session[:error] = false
+    #   erb :rest_page
+    # else
+    #   session[:error] = true
+    #   redirect to("/")
+    # end
   end
 
   private
