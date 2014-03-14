@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314153230) do
+ActiveRecord::Schema.define(version: 20140314191648) do
+
+  create_table "cuisine_zipcodes", force: true do |t|
+    t.integer "cuisine_id"
+    t.integer "zipcode_id"
+  end
 
   create_table "cuisines", force: true do |t|
     t.string "cuisinecode"
@@ -42,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140314153230) do
     t.integer "score"
     t.string  "grade"
     t.string  "slug"
+    t.integer "zipcode_id"
   end
 
   add_index "restaurants", ["slug"], name: "index_restaurants_on_slug"
@@ -50,6 +56,10 @@ ActiveRecord::Schema.define(version: 20140314153230) do
     t.boolean "critical_vio"
     t.string  "vio_code"
     t.string  "description"
+  end
+
+  create_table "zipcodes", force: true do |t|
+    t.string "zip"
   end
 
 end

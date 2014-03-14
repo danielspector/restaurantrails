@@ -3,11 +3,21 @@ class Restaurant < ActiveRecord::Base
   has_many :violations, through: :restaurant_violations
   has_many :restaurant_cuisines
   has_many :cuisines, through: :restaurant_cuisines
+  belongs_to :zipcode
 
   extend FriendlyId
   friendly_id :name, use: :slugged
 
   before_save :slugify
+
+  def zipify
+    self.zipcode_id = self.ziparg
+    self.save
+  end
+  
+  def ziparg
+    Zipcode.find_by(zip: self.zip).id
+  end
 
   def slugify
     self.slug = self.slug_arg
@@ -26,10 +36,10 @@ class Restaurant < ActiveRecord::Base
     Restaurant.where(zip: zip_code)
   end
 
-  def all_zips
-    self.class.all.collect do |r|
+  def self.all_zips
+    self.all.collect do |r|
       r.zip
-    end
+    end.uniq
   end
 
   def address

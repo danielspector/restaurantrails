@@ -11,7 +11,7 @@ get '/restaurants' => 'restaurants#index', as: 'restaurants'
 get '/violation/:id' => 'violations#show', as: 'violation'
 get '/violations' => 'violations#index', as: 'violations'
 
-get '/zipcode/:zip' => 'zipcodes#show', as: 'zip'
+get '/zipcode/:id' => 'zipcodes#show', as: 'zip'
 
 
 end

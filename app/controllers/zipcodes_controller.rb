@@ -1,6 +1,7 @@
-class ZipcodesController < ApplicationController  
+class ZipcodesController < ApplicationController 
+  before_action :set_violation, only: [:show]
+   
   def show
-    @zip_url = params[:id]
   end
 
   # def post_up(p)
@@ -14,4 +15,10 @@ class ZipcodesController < ApplicationController
   #     render 'show'
   #   end
   # end
+
+  private
+  
+  def set_zipcode
+    @zipcode = Zipcode.friendly.find(params[:id]) 
+  end
 end
