@@ -8,7 +8,7 @@
 
   <body>
   <div id="form">
-    <%= render "form" %>
+    <%= render "pages/form" %>
   </div>
   <div class="_page">
     <h2>Cuisine: <%= @cuisine.description %></h2>
@@ -24,5 +24,6 @@
     <%end%>
     </ul>
   </div>
+  <%= link_to "Cuisine Index", cuisines_path %>
   
 </body>

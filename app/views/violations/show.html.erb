@@ -8,7 +8,7 @@
 </head>
   <body>
   <div class="vio_form">
-    <%= render 'form' %>
+    <%=render "pages/form" %>
   </div>
   <div class="_page">
     <h2>Violation <%= @violation.vio_code %></h2>
@@ -30,4 +30,5 @@
     <%end%>
     </ul>
   </div>
+  <%= link_to "Violation Index", violations_path %>
 </body>

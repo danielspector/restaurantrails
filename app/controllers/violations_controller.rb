@@ -1,14 +1,14 @@
 class ViolationsController < ApplicationController
   before_action :set_violation, only: [:show]
-  
-  get '/violation/:vio_id' do
-    if @violation
-      session[:error] = false
-      erb :vio_page
-    else
-      session[:error] = true
-      redirect to("/")
-    end
+
+  def show
+    # if @violation && session[:error] = true
+    #   redirect_to(pages_path)
+    # end
+  end
+
+  def index
+    @violations = Violation.all
   end
 
   private

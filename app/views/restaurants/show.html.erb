@@ -52,13 +52,14 @@
     <div class="_page rest_prof">
       <h2><%= @restaurant.name %></h2>
       <h3><%= @restaurant.phone_num %></h3>
-      <h3><%= link_to @restaurant.address, zip_path %></h3>
+      <!-- COME BACK --> 
+      <h3><%= link_to @restaurant.address, restaurant_path %></h3>
       <% @restaurant.cuisines.each do |c| %>
       <h3><%= link_to c.description, cuisine_path %></h3>
       <% end %>
       <br/>
       <br/>
-      <%= render 'form' %>
+      <%= render "pages/form" %>
     </div>
 
 
@@ -81,6 +82,6 @@
         <% end %>
       </ol>
     </div>
-
+  <%= link_to "Restaurant Index", restaurants_path %>
 
   </body>

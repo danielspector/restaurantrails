@@ -1,0 +1,5 @@
+<ul>
+<% @violations.each do |v| %>
+<li><%= link_to v.description, violation_path(v) %></li>
+<% end %>
+</ul>

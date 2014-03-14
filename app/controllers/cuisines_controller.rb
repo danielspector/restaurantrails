@@ -10,6 +10,10 @@ class CuisinesController < ApplicationController
     # end
   end  
 
+  def index
+    @cuisines = Cuisine.all
+  end
+
   private
 
   def set_cuisine
