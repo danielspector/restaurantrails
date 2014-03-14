@@ -42,7 +42,7 @@ gem 'titleize'
 gem 'geocoder'
 gem 'thin'
 gem 'rspec'
-
+gem 'pry'
 
 
 # Use ActiveModel has_secure_password

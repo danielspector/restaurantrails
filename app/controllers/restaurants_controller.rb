@@ -1,8 +1,8 @@
 class RestaurantsController < ApplicationController
+  before_action :set_restaurant, only: [:show]
 
-  get '/restaurant/:rest_id' do
-    @rest_id = params[:rest_id]
-    if Restaurant.exists?(id: @rest_id)
+  def show
+    if @restaurant
       session[:error] = false
       erb :rest_page
     else
@@ -11,4 +11,9 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  private
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id]) 
+  end
 end

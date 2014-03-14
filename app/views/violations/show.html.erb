@@ -1,0 +1,33 @@
+
+<head>
+   <link href='/profiles.css' rel='stylesheet' type='text/css'>
+</head>
+  <title>
+    <%="#{@violation.vio_code}" %>
+  </title>
+</head>
+  <body>
+  <div class="vio_form">
+    <%= render 'form' %>
+  </div>
+  <div class="_page">
+    <h2>Violation <%= @violation.vio_code %></h2>
+    <h3><%= @violation.description %></h3>
+    <% if @violation.critical_vio == true %>
+    <h1 class="red">This violation is critical</h1>
+    <% end %>
+  </div>
+  <div class="_list">
+
+    <h2>Restaurants with this violation</h2>
+    <% hash = @violation.restaurants.group_by {|r| r.zip} %>
+    <% hash.sort.each do |k, v|%>
+    <br/>
+    <span class= "bold"><a href="/<%=k%>"><%= k %></a><br/></span>
+      <%v.each do |r|%>
+        <a href="/restaurant/<%=r.id%>"><%=r.name%></a><br/>
+      <%end%>
+    <%end%>
+    </ul>
+  </div>
+</body>
