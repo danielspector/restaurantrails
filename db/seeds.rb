@@ -110,7 +110,7 @@ VALID_LETTERS = ["B","C","Z"]
 
 # end
 # f.close
-Restaurant.zipcode_id = Zipcode.find(zip: Restaurant.zip).id
+
 
 # ------------------ ZIPCODES
 # Zipcode.delete_all
@@ -122,10 +122,11 @@ Restaurant.zipcode_id = Zipcode.find(zip: Restaurant.zip).id
 
 
 # ------------------ CUISINEZIPCODES
-# Zipcode.all.each do |zip|
-
-#   end
-# end
+Zipcode.all.each do |zip|
+  zip.restaurants.each do |r|
+    zip.cuisine_zipcodes.build(cuisine: r.cuisines[0] )
+  end
+end
 
 # ------------------ VIOLATIONS
 
