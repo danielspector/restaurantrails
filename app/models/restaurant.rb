@@ -24,7 +24,7 @@ class Restaurant < ActiveRecord::Base
   end
   
   def slug_arg
-    self.name.downcase.gsub(" ", "-")
+    self.name.downcase.gsub(" ", "-").gsub("/", "-")
   end
 
 
