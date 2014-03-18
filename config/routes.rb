@@ -28,5 +28,6 @@ get "/users/:id" => 'users#show'
 
 delete "/users/:id" => 'users#destroy'
 
+root to: 'pages#index'
 
 end

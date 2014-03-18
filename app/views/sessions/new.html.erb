@@ -1,0 +1,12 @@
+<h1>Sign in</h1>
+
+<%= form_tag(sessions_path, method: 'post') do %>
+  <%= token_tag %>
+  <%= label_tag "user[email]", "Email" %>
+  <%= text_field_tag "user[email]" %>
+
+  <%= label_tag "user[password]", "Password" %>
+  <%= password_field_tag "user[password]" %>
+
+  <%= submit_tag "Login" %>
+<% end %>
