@@ -17,7 +17,8 @@
     <% hash = @cuisine.restaurants.group_by {|r| r.zip} %>
     <% hash.sort.each do |k, v|%>
     <br/>
-    <span class= "bold"><a href="/<%=k%>"><%= k %></a><br/></span>
+    <%= link_to k, zip_path(k) %>
+    <br>
       <%v.each do |r|%>
         <%= link_to r.name, restaurant_path(r) %><br/>
       <%end%>
