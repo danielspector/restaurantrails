@@ -44,6 +44,7 @@ gem 'thin'
 gem 'rspec'
 gem 'pry'
 gem 'friendly_id'
+gem 'bcrypt-ruby'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

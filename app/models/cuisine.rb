@@ -5,6 +5,9 @@ class Cuisine < ActiveRecord::Base
   has_many :cuisine_zipcodes
   has_many :zipcodes, through: :cuisine_zipcodes
 
+  has_many :user_cuisines
+  has_many :users, through: :user_cuisines
+
   extend FriendlyId
   friendly_id :description, use: :slugged
 

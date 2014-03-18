@@ -1,7 +1,8 @@
 class ZipcodesController < ApplicationController 
-  before_action :set_violation, only: [:show]
+  before_action :set_zipcode, only: [:show]
    
   def show
+    @zip = Zipcode.find_by(id: params[:id])
   end
 
   # def post_up(p)

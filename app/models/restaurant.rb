@@ -1,8 +1,13 @@
 class Restaurant < ActiveRecord::Base
   has_many :restaurant_violations
   has_many :violations, through: :restaurant_violations
+  
   has_many :restaurant_cuisines
   has_many :cuisines, through: :restaurant_cuisines
+
+  has_many :user_restaurants
+  has_many :users, through: :user_restaurants
+
   belongs_to :zipcode
 
   extend FriendlyId

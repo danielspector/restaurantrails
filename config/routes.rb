@@ -13,5 +13,20 @@ get '/violations' => 'violations#index', as: 'violations'
 
 get '/zipcode/:id' => 'zipcodes#show', as: 'zip'
 
+get '/sessions/new' => 'sessions#new', as: 'new_session'
+post '/sessions' => 'sessions#login'
+
+delete '/sessions' => 'sessions#destroy'
+
+get "/users/new" => 'users#new', as: "new_user"
+post "/users" => 'users#create'
+
+get "/users/:id/edit" => 'users#edit', as: "edit_user"
+patch "/users/:id" => 'users#update', as: "user"
+
+get "/users/:id" => 'users#show'
+
+delete "/users/:id" => 'users#destroy'
+
 
 end

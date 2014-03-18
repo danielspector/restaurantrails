@@ -1,0 +1,27 @@
+<%= @user.name %>
+<%= @user.email %>
+
+<h2>Zipcodes</h2>
+<ul>
+<% @user.zipcodes.each do |zip| %>
+  <li><%= link_to zip.zip, zip_path(zip) %></li>
+<% end %>
+</ul>
+
+<h2>Restaurants</h2>
+<ul>
+<% @user.restaurants.each do |restaurant| %>
+  <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+<% end %>
+</ul>
+
+<h2>Cuisines</h2>
+<ul>
+<% @user.cuisines.each do |cuisine| %>
+  <li><%= link_to cuisine.description, cuisine_path(cuisine) %></li>
+<% end %>
+</ul>
+
+
+<%= link_to "Edit Your Profile", user_path(@user) %>
+<%#= link_to Go to Homepage, root_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314191648) do
+ActiveRecord::Schema.define(version: 20140317235121) do
 
   create_table "cuisine_zipcodes", force: true do |t|
     t.integer "cuisine_id"
@@ -51,6 +51,34 @@ ActiveRecord::Schema.define(version: 20140314191648) do
   end
 
   add_index "restaurants", ["slug"], name: "index_restaurants_on_slug"
+
+  create_table "user_cuisines", force: true do |t|
+    t.integer "user_id"
+    t.integer "cuisine_id"
+  end
+
+  create_table "user_restaurants", force: true do |t|
+    t.integer "user_id"
+    t.integer "restaurant_id"
+  end
+
+  create_table "user_violations", force: true do |t|
+    t.integer "user_id"
+    t.integer "violation_id"
+  end
+
+  create_table "user_zipcodes", force: true do |t|
+    t.integer "user_id"
+    t.integer "zipcode_id"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "violations", force: true do |t|
     t.boolean "critical_vio"
