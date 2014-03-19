@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    raise params.inspect
     @user.update(user_params)
 
     if @user.save

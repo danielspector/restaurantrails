@@ -27,9 +27,9 @@ class User < ActiveRecord::Base
   end
 
   def cuisine_list=(params)
-    params.gsub(" ", "").split(",").each do |cuisine|
-      if Cuisine.find_by(description: cuisine) && !self.cuisines.include?(Cuisine.find_by(description: cuisine))
-        self.cuisines << Cuisine.find_by(description: cuisine)
+    params.each do |cuisine_id|
+      if Cuisine.find_by(id: cuisine_id) && !self.cuisines.include?(id: cuisine_id))
+        self.cuisines << Cuisine.find_by(id: cuisine_id)
       end
     end
   end
