@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    @cuisines = Cuisine.all
   end
 
   def create
@@ -18,15 +19,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @cuisines = Cuisine.all
   end
 
   def update
     @user.update(user_params)
 
     if @user.save
-      redirect_to @user, :notice => "User successfully edited"
+      redirect_to @user, notice: "User successfully edited"
     else
-      render 'edit' 
+      binding.pry
+      render 'edit', notice: "Something went wrong"
     end
   end
 
@@ -36,7 +39,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
 
-    redirect_to new_user_path, :notice =>  "Sorry to see you go :'("
+    redirect_to new_user_path, notice:  "Sorry to see you go :'("
   end
 
   private

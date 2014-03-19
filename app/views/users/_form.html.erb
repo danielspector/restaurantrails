@@ -1,3 +1,4 @@
+<%= flash[:notice] %>
 <%= form_for @user do |f| %>
 
 <%= f.label :name %>
@@ -16,7 +17,7 @@
 <%= f.text_field :zipcode_list %>
 <br>
 <%= f.label :cuisine_list %>
-<%= f.text_field :cuisine_list %>
+<%= f.select :cuisine_list, @cuisines.collect {|c| [c.description, c.id]}, { include_blank: false}, {:multiple => true} %>
 <br>
 <%= f.label :restaurant_list %>
 <%= f.text_field :restaurant_list %>

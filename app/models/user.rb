@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   def zipcode_list=(params)
     params.gsub(" ", "").split(",").each do |zip|
-      if Zipcode.find_by(zip: zip) 
+      if Zipcode.find_by(zip: zip) && !self.zipcodes.include?(Zipcode.find_by(zip: zip))
         self.zipcodes << Zipcode.find_by(zip: zip)  
       end
     end
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
 
   def cuisine_list=(params)
     params.gsub(" ", "").split(",").each do |cuisine|
-      if Cuisine.find_by(description: cuisine)
+      if Cuisine.find_by(description: cuisine) && !self.cuisines.include?(Cuisine.find_by(description: cuisine))
         self.cuisines << Cuisine.find_by(description: cuisine)
       end
     end
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   def restaurant_list=(params)
     params.gsub(" ", "").split(",").each do |restaurant|
-      if Restaurant.find_by(name: restaurant)
+      if Restaurant.find_by(name: restaurant) && !self.restaurants.include?(Restaurant.find_by(name: restaurant))
         self.restaurants << Restaurant.find_by(name: restaurant)
       end
     end
