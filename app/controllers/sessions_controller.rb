@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    binding.pry
     reset_session
     redirect_to new_session_path, notice: "You have signed out"
   end

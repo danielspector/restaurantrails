@@ -7,16 +7,18 @@ post '/pages/' => 'pages#search', as: 'search'
 
 get '/restaurant/:id' => 'restaurants#show', as: 'restaurant'
 get '/restaurants' => 'restaurants#index', as: 'restaurants'
+post 'restaurants' => 'restaurants#index'
 
 get '/violation/:id' => 'violations#show', as: 'violation'
 get '/violations' => 'violations#index', as: 'violations'
 
 get '/zipcode/:id' => 'zipcodes#show', as: 'zip'
 
+
+delete '/sessions' => 'sessions#destroy'
 get '/sessions/new' => 'sessions#new', as: 'new_session'
 post '/sessions' => 'sessions#login'
 
-delete '/sessions' => 'sessions#destroy'
 
 get "/users/new" => 'users#new', as: "new_user"
 post "/users" => 'users#create'
@@ -28,6 +30,6 @@ get "/users/:id" => 'users#show'
 
 delete "/users/:id" => 'users#destroy'
 
-root to: 'pages#index'
+root 'pages#index'
 
 end

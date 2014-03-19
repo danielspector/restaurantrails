@@ -4,11 +4,4 @@ class PagesController < ApplicationController
     session[:error] = false
     render :index
   end
-
-  def search
-    @search = Restaurant.search(params[:q])
-  end
-
-
-
 end

@@ -9,6 +9,9 @@ class ViolationsController < ApplicationController
 
   def index
     @violations = Violation.all
+    @search = Violation.search(params[:q])
+    @found_violations = @search.result
+    @most_common = Violation.most_common
   end
 
   private
