@@ -122,11 +122,11 @@ VALID_LETTERS = ["B","C","Z"]
 
 
 # ------------------ CUISINEZIPCODES
-Zipcode.all.each do |zip|
-  zip.restaurants.each do |r|
-    zip.cuisine_zipcodes.build(cuisine: r.cuisines[0] )
-  end
-end
+# Zipcode.all.each do |zip|
+#   zip.restaurants.each do |r|
+#     zip.cuisine_zipcodes.build(cuisine: r.cuisines[0] )
+#   end
+# end
 
 # ------------------ VIOLATIONS
 
@@ -145,6 +145,7 @@ end
 #   components[2] == "Y" ? v.critical_vio = true : v.critical_vio = false
 #   v.vio_code = components[3]
 #   v.description = components[4]
+#   v.end_date = components[1]
 #   v.save
 # end
 # f.close

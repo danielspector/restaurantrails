@@ -75,7 +75,9 @@
     </h3>
     <ol>
       <% @restaurant.violations.each do |vio| %>
-        <li><%= link_to vio.description, violation_path(vio) %></li>
+        <li><%= link_to vio.description, violation_path(vio) %>
+        <ul><li>Time of last inspection: <%= time_ago_in_words(vio.end_date) %> ago</li></ul>
+        </li>
       <% end %>
     </ol>
   </div>

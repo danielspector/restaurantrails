@@ -45,6 +45,8 @@ gem 'rspec'
 gem 'pry'
 gem 'friendly_id'
 gem 'bcrypt-ruby'
+gem 'bootstrap-sass', '~> 3.1.1'
+gem 'ransack'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317235121) do
+ActiveRecord::Schema.define(version: 20140318191045) do
 
   create_table "cuisine_zipcodes", force: true do |t|
     t.integer "cuisine_id"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20140317235121) do
     t.boolean "critical_vio"
     t.string  "vio_code"
     t.string  "description"
+    t.string  "end_date"
   end
 
   create_table "zipcodes", force: true do |t|
