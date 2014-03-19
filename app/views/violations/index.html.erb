@@ -27,8 +27,15 @@
 <% end %>
 </ol>
 
-<ul>
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Description</th>
+  </tr>
 <% @violations.each do |v| %>
-<li><%= link_to "#{v.vio_code}. #{v.description}", violation_path(v) %></li>
+  <tr>
+    <td><%= link_to v.vio_code, violation_path(v) %></td>
+    <td><%= v.description %></td>
+  </tr>
 <% end %>
-</ul>
+</table>

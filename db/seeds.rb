@@ -145,7 +145,6 @@ VALID_LETTERS = ["B","C","Z"]
 #   components[2] == "Y" ? v.critical_vio = true : v.critical_vio = false
 #   v.vio_code = components[3]
 #   v.description = components[4]
-#   v.end_date = components[1]
 #   v.save
 # end
 # f.close
