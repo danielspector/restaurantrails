@@ -149,3 +149,9 @@ VALID_LETTERS = ["B","C","Z"]
 #   end
 # end
 
+# ------------------ SEED ZIPCODE ID FOR RESTAURANTS
+# Restaurant.all.each do |r|
+#   z = Zipcode.find_by(zip: r.zip)
+#   r.zipcode_id = z.id
+#   r.save
+# end

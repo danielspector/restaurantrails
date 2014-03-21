@@ -1,9 +1,16 @@
   <h3>Find by Name in <%= @zip.zip %></h3>
-  <% Restaurant.zip_list(@zip.zip).sort {|a,b| a.name <=> b.name}.each do |r| %>
+  <% @zip.restaurants.sort {|a,b| a.name <=> b.name}.each do |r| %>
   <%= link_to r.name, restaurant_path(r) %><br>
   <% end %>
 
-  <% Restaurant.zip_list(@zip.zip).sort {|a,b| b.score <=> a.score}.each do |r| %>
+  <h3>Most Common Violations in this Zipcode</h3>
+  <ul>
+  <% @zip.most_common_vios.each do |v| %>
+  <li>Found in <%= v[1] %> restaurants: <%= link_to "#{v[0].description}", violation_path(v) %></li>
+  <% end %>
+  </ul>
+
+  <% @zip.restaurants.sort {|a,b| b.score <=> a.score}.each do |r| %>
   <h2 id="<%= r.name %>"><%= r.name %></h2>
   <h3><%= r.phone_num %></h3>
   <a href="/<%= r.zip %>"><h3><%= r.address %></h3></a>
