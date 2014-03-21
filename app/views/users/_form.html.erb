@@ -21,8 +21,5 @@
 <%= f.label :cuisine_list %>
 <%= f.select :cuisine_list, @cuisines.collect {|c| [c.description, c.id]}, { include_blank: false}, {:multiple => true} %>
 <br>
-<%= f.label :restaurant_list %>
-<%= f.text_field :restaurant_list %>
-
 <%= f.submit %>
 <% end %>

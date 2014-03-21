@@ -5,9 +5,10 @@ get '/cuisines' => 'cuisines#index', as: 'cuisines'
 get '/pages/' => 'pages#index', as: 'home'
 post '/pages/' => 'pages#search', as: 'search'
 
-get '/restaurants/:id' => 'restaurants#show', as: 'restaurant'
 get '/restaurants' => 'restaurants#index', as: 'restaurants'
 post 'restaurants' => 'restaurants#index'
+patch "/restaurants/add_restaurant" => 'restaurants#add_restaurant'
+get '/restaurants/:id' => 'restaurants#show', as: 'restaurant'
 
 get '/violations/:id' => 'violations#show', as: 'violation'
 get '/violations' => 'violations#index', as: 'violations'
@@ -22,7 +23,6 @@ post '/sessions' => 'sessions#login'
 
 get "/users/new" => 'users#new', as: "new_user"
 post "/users" => 'users#create'
-patch "/users/add_restaurant" => 'users#add_restaurant'
 
 get "/users/:id/edit" => 'users#edit', as: "edit_user"
 patch "/users/:id" => 'users#update'
