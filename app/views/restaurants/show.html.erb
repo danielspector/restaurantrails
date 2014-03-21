@@ -66,8 +66,9 @@
           <% end %>
         </ol>
       </div>
-      <form method="PATCH" action="/restaurants/add_restaurant">
+      <form method="POST" action="/restaurants/add_restaurant">
         <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>" />
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
         <button class="button">Add to Watchlist</button>
       </form>
       <a href="/restaurants" class="button [radius round]">Back to Restaurants Index</a>
