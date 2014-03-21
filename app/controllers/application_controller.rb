@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   def login_required
     if !signed_in?
-      redirect_to "/", notice: "Please sign in"
+      redirect_to new_session_path, notice: "Please sign in"
     end
   end
 end

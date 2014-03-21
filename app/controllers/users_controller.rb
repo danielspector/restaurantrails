@@ -1,6 +1,23 @@
 class UsersController < ApplicationController
-  before_action :set_user, :only => [:show, :edit, :update, :destroy]
-  before_action :login_required, :only => [:show, :edit, :update, :destroy]
+  before_action :login_required, :only => [:show, :edit, :update, :destroy, :add_restaurant]
+  before_action :set_user, :only => [:show, :edit, :update, :destroy, :add_restaurant]
+
+  def add_restaurant
+    @user.restaurants << Restaurant.find(params[:restaurant_id])
+    # type = params[:type]
+    # if type == "favorite"
+    #   current_user.favorites << @recipe
+    #   redirect_to :back, notice: 'You favorited #{@recipe.name}'
+
+    # elsif type == "unfavorite"
+    #   current_user.favorites.delete(@recipe)
+    #   redirect_to :back, notice: 'Unfavorited #{@recipe.name}'
+
+    # else
+    #   # Type missing, nothing happens
+    #   redirect_to :back, notice: 'Nothing happened.'
+    # end
+  end
   
   def new
     @user = User.new

@@ -22,7 +22,7 @@ post '/sessions' => 'sessions#login'
 
 get "/users/new" => 'users#new', as: "new_user"
 post "/users" => 'users#create'
-patch "/users/:id/add_restaurant" => 'users#add_restaurant'
+patch "/users/add_restaurant" => 'users#add_restaurant'
 
 get "/users/:id/edit" => 'users#edit', as: "edit_user"
 patch "/users/:id" => 'users#update'
