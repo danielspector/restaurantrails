@@ -47,40 +47,46 @@
 </head>
   <body>
 
-  <div id="map-canvas"></div>
   
-  <div class="_page rest_prof">
-    <h2><%= @restaurant.name %></h2>
-    <h3><%= @restaurant.phone_num %></h3>
-    <!-- COME BACK --> 
-    <h3><%= link_to @restaurant.address, zip_path(@restaurant.zip) %></h3>
-    <% @restaurant.cuisines.each do |c| %>
-    <h3><%= link_to c.description, cuisine_path(c) %></h3>
-    <% end %>
-    <%= render "pages/form" %>
-  </div>
+  <div class="row">
+    <div class="small-7 columns">
+      <div class="_page rest_prof">
+        <h2><%= @restaurant.name %></h2>
+        <h3><%= @restaurant.phone_num %></h3>
+        <!-- COME BACK --> 
+        <h3><%= link_to @restaurant.address, zip_path(@restaurant.zip) %></h3>
+        <% @restaurant.cuisines.each do |c| %>
+        <h3><%= link_to c.description, cuisine_path(c) %></h3>
+        <% end %>
+        <%= render "pages/form" %>
+      </div>
 
 
-  <div class="_list rest_list">
-    
-    <h3><%= 
-      if @restaurant.grade == "B"
-        image_tag "b.jpg"
-      elsif @restaurant.grade == "C"
-        image_tag "c.jpg"
-      else
-        image_tag "pending.jpg"
-      end %>
-      Violation points: <%= @restaurant.score %>
-    </h3>
-    <ol>
-      <% @restaurant.violations.each do |vio| %>
-        <li><%= link_to vio.description, violation_path(vio) %>
-        <ul><li>Time of last inspection: <%= time_ago_in_words(vio.end_date) %> ago</li></ul>
-        </li>
-      <% end %>
-    </ol>
+      <div class="_list rest_list">
+        
+        <h3><%= 
+          if @restaurant.grade == "B"
+            image_tag "b.jpg"
+          elsif @restaurant.grade == "C"
+            image_tag "c.jpg"
+          else
+            image_tag "pending.jpg"
+          end %>
+          Violation points: <%= @restaurant.score %>
+        </h3>
+        <ol>
+          <% @restaurant.violations.each do |vio| %>
+            <li><%= link_to vio.description, violation_path(vio) %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
+      <%= link_to "Restaurant Index", restaurants_path %>
+    </div>
+    <div class="small-5 columns">
+      <div id="map-canvas">
+      </div>
+    </div>
   </div>
-<%= link_to "Restaurant Index", restaurants_path %>
 
 </body>

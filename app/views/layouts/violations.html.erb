@@ -12,39 +12,41 @@
   </head>
 
   <body>
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="#">Restaurant App</a></h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-      </ul>
-
-      <section class="top-bar-section">
-        <!-- Right Nav Section -->
-        <ul class="right">
-          <li><a href="/zipcodes">Zip Code Search</a></li>
-          <li><a href="/cuisines">Cuisine Search</a></li>
-          <li class="active"><a href="/violations">Violation Search</a></li>
-          <li class="has-dropdown">
-            <a href="#">User Info</a>
-            <ul class="dropdown">
-              <% if signed_in? %>
-              <li><%= link_to "Log Out", "/sessions", :method => :delete %></li>
-              <li><%= link_to "My Profile", user_path(current_user)%></li>
-              <% else %>
-              <li><%= link_to "Log In", new_session_path %> or <%= link_to "Sign Up", new_user_path %></li>
-              <% end %>
-            </ul>
+    <div class="sticky" data-options="sticky_on: small">
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="#">Restaurant App</a></h1>
           </li>
+          <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
         </ul>
 
-        <!-- Left Nav Section -->
-        <ul class="left">
-          <li><a href="/restaurants">Find by Restaurant Name</a></li>
-        </ul>
-      </section>
-    </nav>
+        <section class="top-bar-section">
+          <!-- Right Nav Section -->
+          <ul class="right">
+            <li><a href="/zipcodes">Zip Code Search</a></li>
+            <li><a href="/cuisines">Cuisine Search</a></li>
+            <li class="active"><a href="/violations">Violation Search</a></li>
+            <li class="has-dropdown">
+              <a href="#">User Info</a>
+              <ul class="dropdown">
+                <% if signed_in? %>
+                <li><%= link_to "Log Out", "/sessions", :method => :delete %></li>
+                <li><%= link_to "My Profile", user_path(current_user)%></li>
+                <% else %>
+                <li><%= link_to "Log In", new_session_path %> or <%= link_to "Sign Up", new_user_path %></li>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- Left Nav Section -->
+          <ul class="left">
+            <li><a href="/restaurants">Find by Restaurant Name</a></li>
+          </ul>
+        </section>
+      </nav>
+    </div>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>

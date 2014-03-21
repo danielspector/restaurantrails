@@ -1,0 +1,16 @@
+
+#map-canvas { 
+  height: 400px; 
+  width: 600px;
+  float: left;
+  border: 2px solid black;
+  display: block;
+  margin-top: 50px;
+  margin-left: -40px;  
+}
+#map-canvas img{ max-width: none; }
+#map_caption {
+  float: left;
+  clear: left;
+  margin: 10px;
+}
