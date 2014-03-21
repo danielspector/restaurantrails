@@ -10,11 +10,15 @@
 </ul>
 
 <h2>Restaurants</h2>
+<% if @user.restaurants.length == 0 %>
+ <%= link_to "Add restaurants to your watch list", restaurants_path %>
+<% else %>
 <ul>
 <% @user.restaurants.each do |restaurant| %>
   <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
 <% end %>
 </ul>
+<% end %>
 
 <h2>Cuisines</h2>
 <ul>
