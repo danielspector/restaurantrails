@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :email, :password, :password_confirmation
   validates_uniqueness_of :email
   
-  attr_reader :zipcode_list, :cuisine_list, :restaurant_list
+  attr_reader :zipcode_list, :cuisine_list
 
   def zipcode_list=(params)
     params.gsub(" ", "").split(",").each do |zip|
@@ -31,12 +31,6 @@ class User < ActiveRecord::Base
       if Cuisine.find_by(id: cuisine_id) && !self.cuisines.include?(id: cuisine_id)
         self.cuisines << Cuisine.find_by(id: cuisine_id)
       end
-    end
-  end
-
-  def restaurant_list=(id)
-    if !self.restaurants.include?(Restaurant.find_by(id: id))
-      self.restaurants << Restaurant.find_by(id: id)
     end
   end
 end

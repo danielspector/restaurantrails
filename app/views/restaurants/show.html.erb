@@ -45,35 +45,20 @@
       google.maps.event.addDomListener(window, 'load', initialize);
   </script>
 </head>
-  <body>
-
-  
-  <div class="row">
-    <div class="small-7 columns">
-      <div class="_page rest_prof">
-        <h2><%= @restaurant.name %></h2>
-        <h3><%= @restaurant.phone_num %></h3>
-        <!-- COME BACK --> 
-        <h3><%= link_to @restaurant.address, zip_path(@restaurant.zip) %></h3>
-        <% @restaurant.cuisines.each do |c| %>
-        <h3><%= link_to c.description, cuisine_path(c) %></h3>
-        <% end %>
-        <%= render "pages/form" %>
-      </div>
-
-
+<body>
+  <div id="content-below-bar">
+    <div class="medium-6 small-block-grid-7 columns">
       <div class="_list rest_list">
-        
-        <h3><%= 
+        <h2><%= 
           if @restaurant.grade == "B"
-            image_tag "b.jpg"
+            image_tag("b.jpg", class: "grade")
           elsif @restaurant.grade == "C"
-            image_tag "c.jpg"
+            image_tag("c.jpg", class: "grade")
           else
-            image_tag "pending.jpg"
+            image_tag("pending.jpg", class: "grade")
           end %>
           Violation points: <%= @restaurant.score %>
-        </h3>
+        </h2>
         <ol>
           <% @restaurant.violations.each do |vio| %>
             <li><%= link_to vio.description, violation_path(vio) %>
@@ -81,12 +66,28 @@
           <% end %>
         </ol>
       </div>
-      <%= link_to "Restaurant Index", restaurants_path %>
+      <form method="PATCH" action="/users/add_restaurant">
+        <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>" />
+        <button class="button">Add to Watchlist</button>
+      </form>
+      <a href="/restaurants" class="button [radius round]">Back to Restaurants Index</a>
     </div>
-    <div class="small-5 columns">
-      <div id="map-canvas">
+    <div class="medium-5 small-block-grid-5 columns">
+      <div class="row">
+        <div id="map-canvas">
+        </div><br>
+     </div>
+      <div>
+        <div class="medium-9 small-block-grid-9 restaurant-info">
+          <h2><%= @restaurant.name %></h2>
+          <h3><%= @restaurant.phone_num %></h3>
+          <h3><%= "#{@restaurant.building_number} #{@restaurant.street_name}" %>
+          <a href="/zipcodes/<%= @restaurant.zip %>"><%= @restaurant.zip %></a></h3>
+          <% @restaurant.cuisines.each do |c| %>
+          <h3><%= link_to c.description, cuisine_path(c) %></h3>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-
 </body>
