@@ -8,13 +8,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-
+    @user = User.create(user_params)
     if @user.save
-      redirect_to @user, :notice => "User successfuly created"
+      session[:user_id] = @user.id
+      redirect_to @user
     else
-        # flash[:notice] = "Restaurant name invalid"
-      render 'new' 
+      redirect_to restaurants_path 
     end
   end
 
@@ -23,13 +22,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    raise params.inspect
     @user.update(user_params)
 
     if @user.save
       redirect_to @user, notice: "User successfully edited"
     else
-      binding.pry
       render 'edit', notice: "Something went wrong"
     end
   end
@@ -39,7 +36,6 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-
     redirect_to new_user_path, notice:  "Sorry to see you go :'("
   end
 

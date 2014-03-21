@@ -24,9 +24,9 @@ get "/users/new" => 'users#new', as: "new_user"
 post "/users" => 'users#create'
 
 get "/users/:id/edit" => 'users#edit', as: "edit_user"
-patch "/users/:id" => 'users#update', as: "user"
+patch "/users/:id" => 'users#update'
 
-get "/users/:id" => 'users#show'
+get "/users/:id" => 'users#show', as: "user"
 
 delete "/users/:id" => 'users#destroy'
 
