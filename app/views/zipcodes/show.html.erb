@@ -1,6 +1,6 @@
   <h3>Find by Name in <%= @zip.zip %></h3>
   <% Restaurant.zip_list(@zip.zip).sort {|a,b| a.name <=> b.name}.each do |r| %>
-  <%= link_to r.name, restaurant_path %><br>
+  <%= link_to r.name, restaurant_path(r) %><br>
   <% end %>
 
   <% Restaurant.zip_list(@zip.zip).sort {|a,b| b.score <=> a.score}.each do |r| %>
