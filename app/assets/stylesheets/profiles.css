@@ -1,16 +1,28 @@
+#content-below-bar {
+  padding-top: 30px;
+  padding-left: 50px;
+
+}
+.grade {
+  border: 1px solid black;
+}
 
 #map-canvas { 
-  height: 400px; 
-  width: 600px;
-  float: left;
+  height: 300px; 
+  width: 450px;
   border: 2px solid black;
-  display: block;
-  margin-top: 50px;
-  margin-left: -40px;  
+  /*margin-top: 50px;*/
+  /*margin-left: 35px;*/
+}
+
+.restaurant-info {
+  text-align: center;
+  /*padding-right: 100px;*/
 }
 #map-canvas img{ max-width: none; }
-#map_caption {
-  float: left;
-  clear: left;
+/*#map_caption {
+  float: center;
+  clear: center;
   margin: 10px;
 }
+*/

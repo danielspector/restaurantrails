@@ -1,3 +1,4 @@
+<div id="content-below-bar">
   <h3>Find by Name in <%= @zip.zip %></h3>
   <% Restaurant.zip_list(@zip.zip).sort {|a,b| a.name <=> b.name}.each do |r| %>
   <a href="<%= "/restaurant/#{r.id}" %>"><%= r.name %></a><br>
@@ -26,3 +27,4 @@
     <% end %>
   </ol><br>
   <% end %>
+</div>
