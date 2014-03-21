@@ -34,11 +34,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  def restaurant_list=(params)
-    params.gsub(" ", "").split(",").each do |restaurant|
-      if Restaurant.find_by(name: restaurant) && !self.restaurants.include?(Restaurant.find_by(name: restaurant))
-        self.restaurants << Restaurant.find_by(name: restaurant)
+  def restaurant_list=(id)
+      if !self.restaurants.include?(Restaurant.find_by(id: id))
+        self.restaurants << Restaurant.find_by(id: id)
       end
-    end
   end
 end
