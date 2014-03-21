@@ -35,8 +35,8 @@ class User < ActiveRecord::Base
   end
 
   def restaurant_list=(id)
-      if !self.restaurants.include?(Restaurant.find_by(id: id))
-        self.restaurants << Restaurant.find_by(id: id)
-      end
+    if !self.restaurants.include?(Restaurant.find_by(id: id))
+      self.restaurants << Restaurant.find_by(id: id)
+    end
   end
 end
