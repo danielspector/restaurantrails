@@ -17,9 +17,9 @@
 <%= f.text_field :zipcode_list %>
 
 <%#= f.collection_check_boxes :zipcodes, Author.all, :id, :name_with_initial %>
-<br>
-<%= f.label :cuisine_list %>
-<%= f.select :cuisine_list, @cuisines.collect {|c| [c.description, c.id]}, { include_blank: false}, {:multiple => true} %>
+<!-- <br> -->
+<%#= f.label :cuisine_list %>
+<%#= f.select :cuisine_list, @cuisines.collect {|c| [c.description, c.id]}, { include_blank: false}, {:multiple => true} %>
 <br>
 <%= f.submit %>
 <% end %>
