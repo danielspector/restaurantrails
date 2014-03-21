@@ -53,7 +53,7 @@
     <h2><%= @restaurant.name %></h2>
     <h3><%= @restaurant.phone_num %></h3>
     <!-- COME BACK --> 
-    <h3><%= link_to @restaurant.address, zip_path(@restaurant.zipcode) %></h3>
+    <h3><%= link_to @restaurant.address, zip_path(@restaurant.zip) %></h3>
     <% @restaurant.cuisines.each do |c| %>
     <h3><%= link_to c.description, cuisine_path(c) %></h3>
     <% end %>
