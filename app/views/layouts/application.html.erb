@@ -24,8 +24,9 @@
         <!-- Right Nav Section -->
         <ul class="right">
           <li><a href="/zipcodes">Zip Code Search</a></li>
-          <li><a href="/cuisines">Cuisine Search</a></li>
-          <li><a href="/violations">Violation Search</a></li>
+          <li<%= yield(:cuis_nav) if content_for?(:cuis_nav) %>><%= link_to "Cuisine Search", cuisines_path %></li>
+          <!-- <a href="/cuisines">Cuisine Search</a> -->
+          <li<%= yield(:vio_nav) if content_for?(:vio_nav) %>><%= link_to "Violation Search", violations_path %></li>
           <li class="has-dropdown">
             <a href="#">User Info</a>
             <ul class="dropdown">
