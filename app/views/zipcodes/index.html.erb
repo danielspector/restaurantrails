@@ -1,0 +1,13 @@
+<div class="content-below-bar">
+  <div class="medium-7 columns">
+  <% if flash[:errors] %>
+    <h3 id="error"><%= flash[:errors] %></h3>
+    <% flash.delete(:errors) %>
+  <% end %>  
+    <%= search_form_for @search do |f| %>
+      <%= f.label :zip_cont, "Zip Code:" %>
+      <%= f.number_field :zip_cont %>
+      <button class="button">Search Zip Code</button>
+    <% end %>
+  </div>
+</div>

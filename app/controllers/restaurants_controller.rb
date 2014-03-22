@@ -19,7 +19,12 @@ class RestaurantsController < ApplicationController
   end
 
   def index
-    @restaurants = Restaurant.all
+    if params[:q]
+      if params[:q][:name_cont].length < 3
+        flash[:errors] = "Your search must be at least 3 characters long!"
+        params.delete(:q)
+      end
+    end
     @search = Restaurant.search(params[:q])
     @found_restaurants = @search.result
   end

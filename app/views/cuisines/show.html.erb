@@ -1,5 +1,4 @@
 <head>
-   <link href='/profiles.css' rel='stylesheet' type='text/css'>
 </head>
   <title>
     <%=@cuisine.description%>
@@ -10,21 +9,20 @@
   <div id="form">
     <%= render "pages/form" %>
   </div>
-  <div class="_page">
-    <h2>Cuisine: <%= @cuisine.description %></h2>
-
-    <h2>Restaurants</h2>
+  <div class="medium-12 columns">
+    <h2><%= @cuisine.description %> Restaurant High Violators:</h2>
     <% hash = @cuisine.restaurants.group_by {|r| r.zip} %>
     <% hash.sort.each do |k, v|%>
     <br/>
     <%= link_to k, zip_path(k) %>
     <br>
-      <%v.each do |r|%>
-        <%= link_to r.name, restaurant_path(r) %><br/>
-      <%end%>
+      <ul>
+        <%v.each do |r|%>
+          <li><%= link_to r.name, restaurant_path(r) %></li>
+        <%end%>
+      </ul>
     <%end%>
     </ul>
+  <a href="/cuisines" class="button [radius round]">Back to Cuisines Index</a>
   </div>
-  <%= link_to "Cuisine Index", cuisines_path %>
-  
 </body>

@@ -14,6 +14,7 @@ get '/violations/:id' => 'violations#show', as: 'violation'
 get '/violations' => 'violations#index', as: 'violations'
 
 get '/zipcodes/:id' => 'zipcodes#show', as: 'zip'
+get '/zipcodes' => 'zipcodes#index'
 
 
 delete '/sessions' => 'sessions#destroy'
