@@ -1,6 +1,4 @@
 
-    <%=render "pages/form" %>
-
     <h2>Violation <%= @violation.vio_code %></h2>
     <h3><%= @violation.description %></h3>
     <% if @violation.critical_vio == true %>
@@ -15,10 +13,9 @@
     <%= link_to k, zip_path(k) %>
     <br>
       <%v.each do |r|%>
-        <a href="/restaurant/<%=r.id%>"><%=r.name%></a><br/>
+        <a href="/restaurant/<%=r.id%>" data-no-turbolink="true" ><%=r.name%></a><br/>
       <%end%>
     <%end%>
     </ul>
 
   <%= link_to "Violation Index", violations_path %>
-</body>

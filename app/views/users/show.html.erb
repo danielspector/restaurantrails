@@ -15,7 +15,7 @@
 <% else %>
 <ul>
 <% @user.restaurants.each do |restaurant| %>
-  <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+  <li><%= link_to restaurant.name, restaurant_path(restaurant), 'data-no-turbolink' => true %></li>
 <% end %>
 </ul>
 <% end %>
