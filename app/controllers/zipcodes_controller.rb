@@ -5,6 +5,26 @@ class ZipcodesController < ApplicationController
     @zip = Zipcode.find_by(zip: params[:id])
   end
 
+  def index
+    @search = Zipcode.search(params[:q])
+    if params[:q] && params[:q][:zip_cont]
+      if params[:q][:zip_cont].length != 5 || params[:q][:zip_cont].to_i.to_s != params[:q][:zip_cont]
+        binding.pry
+        flash[:errors] = "Invalid zipcode!"
+        params.delete(:q)
+      else
+        @found_zip = @search.result
+      end
+    end
+
+
+    if @found_zip == nil || @found_zip == []
+      render 'index'
+    else
+      redirect_to "/zipcodes/#{@found_zip.first.zip}"
+    end
+  end
+
   # def post_up(p)
   #   @zip_url = p.to_i
   #   @worst = Restaurant.worst_restaurant_in_zip(@zip_url, 3)
