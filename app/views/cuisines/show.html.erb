@@ -6,9 +6,7 @@
 </head>
 
   <body>
-  <div id="form">
-    <%= render "pages/form" %>
-  </div>
+
   <div class="medium-12 columns">
     <h2><%= @cuisine.description %> Restaurant High Violators:</h2>
     <% hash = @cuisine.restaurants.group_by {|r| r.zip} %>

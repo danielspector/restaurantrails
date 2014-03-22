@@ -14,7 +14,14 @@ class RestaurantsController < ApplicationController
 
   def add_restaurant
     @user = current_user
-    @user.restaurants << Restaurant.find(params[:restaurant_id])
+    r = Restaurant.find(params[:restaurant_id])
+    @user.restaurants << r if !@user.restaurants.include?(r)
+    redirect_to @user
+  end
+
+  def remove_restaurant
+    @user = current_user
+    @user.user_restaurants.where(restaurant_id: params[:restaurant_id]).destroy_all
     redirect_to @user
   end
 

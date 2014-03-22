@@ -64,13 +64,23 @@
         </ol>
       </div>
       <div class="row">
-        <div class="medium-6 columns">
-          <form method="POST" action="/restaurants/add_restaurant">
-            <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>" />
-            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-            <button class="button">Add to Watchlist</button>
-          </form>
-        </div>
+        <% if current_user == nil || !current_user.restaurants.include?(@restaurant) %>
+          <div class="medium-6 columns">
+            <form method="POST" action="/restaurants/add_restaurant">
+              <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>" />
+              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+              <button class="button">Add to Watchlist</button>
+            </form>
+          </div>
+        <% else %>
+          <div class="medium-6 columns">
+            <form method="POST" action="/restaurants/remove_restaurant">
+              <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>" />
+              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+              <button class="button alert">Remove from Watchlist</button>
+            </form>
+          </div>
+        <% end %>
         <div class="medium-6 columns">
           <a href="/restaurants" class="button [radius round]">Back to Restaurants Index</a>
         </div>
@@ -86,7 +96,7 @@
           <h2><%= @restaurant.name %></h2>
           <h3><%= @restaurant.phone_num %></h3>
           <h3><%= "#{@restaurant.building_number} #{@restaurant.street_name}" %>, 
-          <a href="/zipcodes/<%= @restaurant.zip %>"><%= @restaurant.zip %></a></h3>
+          <a href="/zipcodes/<%= @restaurant.zip %>" data-no-turbolink="true"><%= @restaurant.zip %></a></h3>
           <% @restaurant.cuisines.each do |c| %>
           <h3><%= link_to c.description, cuisine_path(c) %></h3>
           <% end %>

@@ -7,35 +7,43 @@
   </div>
 
   <div class="medium-10 columns">
-    <h3>Most Common Violations in this Zipcode</h3>
-    <ul>
-    <% @zip.most_common_vios.each do |v| %>
-    <li>Found in <%= v[1] %> restaurants: <%= "#{v[0].description}" %></li>
-    <% end %>
-    </ul>
-
-    <% @zip.restaurants.sort {|a,b| b.score <=> a.score}.each do |r| %>
-    <h2 id="<%= r.name %>"><%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %></h2>
-    <h3><%= r.phone_num %></h3>
-    <a href="/<%= r.zip %>"><h3><%= r.address %></h3></a>
-    <% r.cuisines.each do |c| %>
-      <a href="/cuisine/<%=c.id%>"><h3><%= c.description %></h3></a>
-    <% end %>
-    <h3><%= 
-      if r.grade == "B"
-        image_tag 'b.jpg'
-      elsif r.grade == "C"
-        image_tag 'c.jpg'
-      else
-        image_tag 'pending.jpg'
-      end %>
-      Violation points: <%= r.score %>
-    </h3>
-    <ol>
-      <% r.violations.each do |vio| %>
-        <li><a href="/violations/<%=vio.id%>"><%= vio.description %></a></li>
+    <div>
+      <div class="medium-6 columns">
+        <h3>Most Common Violations in this Zipcode</h3>
+        <ul>
+        <% @zip.most_common_vios.each do |v| %>
+        <li>Found in <%= v[1] %> restaurants: <%= "#{v[0].description}" %></li>
+        <% end %>
+        </ul>
+      </div>
+      <div class="medium-6 columns">
+        <div id="map-canvas"></div>
+      </div>
+    </div>
+    <div class="medium-12 columns">
+      <% @zip.restaurants.sort {|a,b| b.score <=> a.score}.each do |r| %>
+      <h2 id="<%= r.name %>"><%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %></h2>
+      <h3><%= r.phone_num %></h3>
+      <a href="/<%= r.zip %>"><h3><%= r.address %></h3></a>
+      <% r.cuisines.each do |c| %>
+        <a href="/cuisine/<%=c.id%>"><h3><%= c.description %></h3></a>
       <% end %>
-    </ol><br>
-    <% end %>
+      <h3><%= 
+        if r.grade == "B"
+          image_tag 'b.jpg'
+        elsif r.grade == "C"
+          image_tag 'c.jpg'
+        else
+          image_tag 'pending.jpg'
+        end %>
+        Violation points: <%= r.score %>
+      </h3>
+      <ol>
+        <% r.violations.each do |vio| %>
+          <li><a href="/violations/<%=vio.id%>"><%= vio.description %></a></li>
+        <% end %>
+      </ol><br>
+      <% end %>
+    </div>
   </div>
 </div>

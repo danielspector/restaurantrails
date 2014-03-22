@@ -15,7 +15,7 @@
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
         <li class="name">
-          <h1><a href="#">Restaurant App</a></h1>
+          <h1><a href="<%= root_url %>">Avoid</a></h1>
         </li>
         <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
       </ul>
@@ -23,10 +23,12 @@
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
+          <li<%= yield(:rest_nav) if content_for?(:rest_nav) %>><%= link_to "Restaurant Search", restaurants_path %>
+        </li>
           <li<%= yield(:zip_nav) if content_for?(:zip_nav) %>><%= link_to "Zipcode Search", zipcodes_path %></li>
-          <li<%= yield(:cuis_nav) if content_for?(:cuis_nav) %>><%= link_to "Cuisine Search", cuisines_path %></li>
-          <!-- <a href="/cuisines">Cuisine Search</a> -->
-          <li<%= yield(:vio_nav) if content_for?(:vio_nav) %>><%= link_to "Violation Search", violations_path %></li>
+          <li<%= yield(:vio_nav) if content_for?(:vio_nav) %>><%= link_to "Violation Search", violations_path %>
+          </li>
+          <li<%= yield(:cuis_nav) if content_for?(:cuis_nav) %>><%= link_to "Cuisine List", cuisines_path %></li>
           <li class="has-dropdown">
             <a href="#">User Info</a>
             <ul class="dropdown">
@@ -41,9 +43,6 @@
         </ul>
 
         <!-- Left Nav Section -->
-        <ul class="left">
-          <li><a href="/restaurants">Find by Restaurant Name</a></li>
-        </ul>
       </section>
     </nav>
     <%= yield %>
