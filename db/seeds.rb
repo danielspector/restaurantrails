@@ -155,3 +155,24 @@ VALID_LETTERS = ["B","C","Z"]
 #   r.zipcode_id = z.id
 #   r.save
 # end
+
+
+
+
+# ------------------ FIXING SLUG DUPES
+# obj_slugs = Restaurant.all.collect do |r|
+#               [r, r.slug]
+#             end
+
+# frequencies = Hash.new(0)
+# obj_slugs.each{|key| frequencies[key[1]] += 1}
+
+# dupes = []
+# obj_slugs.each do |slug_array|
+#   dupes << slug_array[0] if frequencies[slug_array[1]] > 1
+# end
+
+# dupes.each do |dupe|
+#   dupe.slug = dupe.phone
+#   dupe.save
+# end
