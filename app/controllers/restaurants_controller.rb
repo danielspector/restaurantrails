@@ -3,13 +3,6 @@ class RestaurantsController < ApplicationController
   before_action :login_required, :only => [:add_restaurant]
 
   def show
-    # if @restaurant
-    #   session[:error] = false
-    #   erb :rest_page
-    # else
-    #   session[:error] = true
-    #   redirect to("/")
-    # end
   end
 
   def add_restaurant
@@ -28,7 +21,7 @@ class RestaurantsController < ApplicationController
   def index
     if params[:q]
       if params[:q][:name_cont].length < 3
-        flash[:errors] = "Your search must be at least 3 characters long!"
+        flash[:notice] = "Your search must be at least 3 characters long!"
         params.delete(:q)
       end
     end

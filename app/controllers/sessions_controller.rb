@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      redirect_to 'new', notice: "You made a huge mistake"
+      flash[:notice] = "Invalid login!  Try again!"
+      render 'new'
     end
   end
 

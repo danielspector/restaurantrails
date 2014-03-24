@@ -1,3 +1,14 @@
+@import url("http://fonts.googleapis.com/css?family=Denk+One");
+
+.logo {
+  font-family: 'Denk One', sans-serif;
+}
+
+#logo-content {
+  text-align: center;
+  vertical-align: middle;
+}
+
 #content-below-bar {
   padding-top: 30px;
   padding-left: 50px;
