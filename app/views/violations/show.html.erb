@@ -14,7 +14,7 @@
     <%= link_to k, zip_path(k) %>
     <br>
     <%v.each do |r|%>
-      <a href="/restaurant/<%=r.id%>" data-no-turbolink="true" ><%=r.name%></a><br/>
+      <%= link_to r.name, restaurant_path(r)%><br/>
     <%end%>
   <%end%>
 <% end %>
