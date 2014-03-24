@@ -20,6 +20,6 @@ test:
 
 production:
   adapter: postgresql
-  database: restaurants_production
+  database: restaurants_development
   pool: 5
   timeout: 5000
