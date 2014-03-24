@@ -17,23 +17,19 @@ class Zipcode < ActiveRecord::Base
     
     frequencies = Hash.new(0)
     all_vios.each{|key| frequencies[key] += 1}
-    
-    freq_array = frequencies.values.sort
-    first  = freq_array[-1]
-    third  = freq_array[-3]
-    second = freq_array[-2]
-    top    = [first, second, third]
+    frequencies.sort
 
-    i = 2
-    next_highest = freq_array[-i - 1]
-    binding.pry
-    while freq_array[-i] ==  next_highest
-      top <<  next_highest
+
+    top = [frequencies.sort[0], frequencies.sort[1], frequencies.sort[2]]
+
+    i = 3
+    next_highest_freq = frequencies.sort[i + 1][1]
+    next_highest_vio = frequencies.sort[i + 1]
+    while frequencies.sort[i][1] ==  next_highest_freq
+      top <<  next_highest_vio
       i += 1
     end
 
-    top.collect do |num|
-      frequencies.assoc(frequencies.key(num))
-    end
+    top
   end
 end
