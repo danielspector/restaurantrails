@@ -1,61 +1,61 @@
 VALID_LETTERS = ["B","C","Z"]
 
 # # ------------------ RESTAURANT
-# Restaurant.delete_all
-# f = File.new("./app/public/textfiles/WebExtract.txt", 'r')
-# f.gets
-# while line = f.gets
-#   components = line.force_encoding('ISO-8859-1').encode('utf-8', replace: nil).gsub("\"", "").split(",")
-#   begin
-#     d = Date.iso8601(components[8].split(" ")[0])
-#     r = Restaurant.find_by(phone: components[6].to_i)
-#     if r != nil
-#       if r.date < d.to_s
-#         if !VALID_LETTERS.include?(components[12])
-#           r.destroy
-#         else
-#           r.date = d.to_s
-#           r.save
-#         end
-#       end
-#       next
-#     end
-#   rescue
-#     next
-#   end
+Restaurant.delete_all
+f = File.new("./app/public/textfiles/WebExtract.txt", 'r')
+f.gets
+while line = f.gets
+  components = line.force_encoding('ISO-8859-1').encode('utf-8', replace: nil).gsub("\"", "").split(",")
+  begin
+    d = Date.iso8601(components[8].split(" ")[0])
+    r = Restaurant.find_by(phone: components[6].to_i)
+    if r != nil
+      if r.date < d.to_s
+        if !VALID_LETTERS.include?(components[12])
+          r.destroy
+        else
+          r.date = d.to_s
+          r.save
+        end
+      end
+      next
+    end
+  rescue
+    next
+  end
 
-#   next if (Date.today - d) > 200
-#   next if !VALID_LETTERS.include?(components[12])
-#   next if components[5].length != 5
-#   r = Restaurant.new
-#   r.name = components[1].downcase.titleize
-#   r.building_number = components[3].to_i
-#   r.street_name = components[4].downcase.titleize
-#   r.zip = components[5].to_i
-#   r.phone = components[6].to_i
-#   r.cuisinecode = components[7].to_i
-#   r.date = d.to_s
-#   r.score = components[11].to_i
-#   r.grade = components[12]
-#   r.save
-# end
-# f.close
+  next if (Date.today - d) > 200
+  next if !VALID_LETTERS.include?(components[12])
+  next if components[5].length != 5
+  r = Restaurant.new
+  r.name = components[1].downcase.titleize
+  r.building_number = components[3].to_i
+  r.street_name = components[4].downcase.titleize
+  r.zip = components[5].to_i
+  r.phone = components[6].to_i
+  r.cuisinecode = components[7].to_i
+  r.date = d.to_s
+  r.score = components[11].to_i
+  r.grade = components[12]
+  r.save
+end
+f.close
 
 
 # # ------------------ CUISINE
-# Cuisine.delete_all
-# f = File.new("./app/public/textfiles/Cuisine.txt", 'r')
-# f.gets
-# while line = f.gets
-#   components = line.force_encoding('ISO-8859-1').encode('utf-8', replace: nil).gsub(/<\/?.*?>/, "").gsub("\"", "").split(",") # .gsub(/<.+>/, "")
-#   next if !Restaurant.exists?(cuisinecode: components[0])
-#   # next if Violation.find_by vio_code: components[3] != nil
-#   c = Cuisine.new
-#   c.cuisinecode = components[0]
-#   c.description = components[1].gsub("\r\n", "")
-#   c.save
-# end
-# f.close
+Cuisine.delete_all
+f = File.new("./app/public/textfiles/Cuisine.txt", 'r')
+f.gets
+while line = f.gets
+  components = line.force_encoding('ISO-8859-1').encode('utf-8', replace: nil).gsub(/<\/?.*?>/, "").gsub("\"", "").split(",") # .gsub(/<.+>/, "")
+  next if !Restaurant.exists?(cuisinecode: components[0])
+  # next if Violation.find_by vio_code: components[3] != nil
+  c = Cuisine.new
+  c.cuisinecode = components[0]
+  c.description = components[1].gsub("\r\n", "")
+  c.save
+end
+f.close
 
 # ------------------ VIOLATIONS
 
