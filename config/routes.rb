@@ -8,12 +8,14 @@ post '/pages/' => 'pages#search', as: 'search'
 get '/restaurants' => 'restaurants#index', as: 'restaurants'
 post 'restaurants' => 'restaurants#index'
 post "/restaurants/add_restaurant" => 'restaurants#add_restaurant'
+post "/restaurants/remove_restaurant" => 'restaurants#remove_restaurant'
 get '/restaurants/:id' => 'restaurants#show', as: 'restaurant'
 
 get '/violations/:id' => 'violations#show', as: 'violation'
 get '/violations' => 'violations#index', as: 'violations'
 
 get '/zipcodes/:id' => 'zipcodes#show', as: 'zip'
+get '/zipcodes' => 'zipcodes#index'
 
 
 delete '/sessions' => 'sessions#destroy'

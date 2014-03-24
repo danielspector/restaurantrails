@@ -14,12 +14,24 @@ class RestaurantsController < ApplicationController
 
   def add_restaurant
     @user = current_user
-    @user.restaurants << Restaurant.find(params[:restaurant_id])
+    r = Restaurant.find(params[:restaurant_id])
+    @user.restaurants << r if !@user.restaurants.include?(r)
+    redirect_to @user
+  end
+
+  def remove_restaurant
+    @user = current_user
+    @user.user_restaurants.where(restaurant_id: params[:restaurant_id]).destroy_all
     redirect_to @user
   end
 
   def index
-    @restaurants = Restaurant.all
+    if params[:q]
+      if params[:q][:name_cont].length < 3
+        flash[:errors] = "Your search must be at least 3 characters long!"
+        params.delete(:q)
+      end
+    end
     @search = Restaurant.search(params[:q])
     @found_restaurants = @search.result
   end

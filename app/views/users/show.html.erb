@@ -1,31 +1,33 @@
-<h2><%= @user.name %></h2>
-<br>
-<%= @user.email %>
+<div class="medium-12 columns">
+  <h2><%= @user.name %></h2>
+  <br>
+  <%= @user.email %>
 
-<h2>Zipcodes</h2>
-<ul>
-<% @user.zipcodes.each do |zip| %>
-  <li><%= link_to zip.zip, zip_path(zip) %></li>
-<% end %>
-</ul>
+  <h2>Zipcodes</h2>
+  <ul>
+  <% @user.zipcodes.each do |zip| %>
+    <li><%= link_to zip.zip, zip_path(zip), 'data-no-turbolink' => true %></li>
+  <% end %>
+  </ul>
 
-<h2>Restaurants</h2>
-<% if @user.restaurants.length == 0 %>
- <%= link_to "Add restaurants to your watch list", restaurants_path %>
-<% else %>
-<ul>
-<% @user.restaurants.each do |restaurant| %>
-  <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
-<% end %>
-</ul>
-<% end %>
+  <h2>Restaurants</h2>
+  <% if @user.restaurants.length == 0 %>
+   <p>You have no restaurants on your watchlist.</p>
+  <% else %>
+  <ul>
+  <% @user.restaurants.each do |restaurant| %>
+      <li><%= link_to restaurant.name, restaurant_path(restaurant), 'data-no-turbolink' => true %>
+      </li>
+  <% end %>
+  </ul>
+  <% end %>
 
-<!-- <h2>Cuisines</h2>
-<ul>
-<%# @user.cuisines.each do |cuisine| %>
-  <li><%#= link_to cuisine.description, cuisine_path(cuisine) %></li>
-<%# end %>
-</ul> -->
+  <!-- <h2>Cuisines</h2>
+  <ul>
+  <%# @user.cuisines.each do |cuisine| %>
+    <li><%#= link_to cuisine.description, cuisine_path(cuisine) %></li>
+  <%# end %>
+  </ul> -->
 
-<p><%= link_to "Edit Your Profile", edit_user_path(@user), :class => "button" %>  <%= link_to "Go to Homepage", root_path, :class => "button" %></p>
-
+  <p><%= link_to "Edit Your Profile", edit_user_path(@user), :class => "button" %>  <%= link_to "Go to Homepage", root_path, :class => "button" %></p>
+</div>
