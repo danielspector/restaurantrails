@@ -1,6 +1,6 @@
 VALID_LETTERS = ["B","C","Z"]
 
-# # ------------------ RESTAURANT
+# # # ------------------ RESTAURANT
 # Restaurant.delete_all
 # f = File.new("./app/public/textfiles/WebExtract.txt", 'r')
 # f.gets
@@ -42,7 +42,7 @@ VALID_LETTERS = ["B","C","Z"]
 # f.close
 
 
-# # ------------------ CUISINE
+# # # ------------------ CUISINE
 # Cuisine.delete_all
 # f = File.new("./app/public/textfiles/Cuisine.txt", 'r')
 # f.gets
@@ -57,7 +57,7 @@ VALID_LETTERS = ["B","C","Z"]
 # end
 # f.close
 
-# ------------------ VIOLATIONS
+# # ------------------ VIOLATIONS
 
 # Violation.delete_all
 # f = File.new("./app/public/textfiles/Violation.txt", 'r')
@@ -80,23 +80,23 @@ VALID_LETTERS = ["B","C","Z"]
 # end
 # f.close
 
-# ------------------ RESTAURANTCUISINE
+# # ------------------ RESTAURANTCUISINE
 # RestaurantCuisine.delete_all
 # f = File.new("./app/public/textfiles/WebExtract.txt", 'r')
 # f.gets
 # f.each_line do |line|
 #   components = line.force_encoding('ISO-8859-1').encode('utf-8', replace: nil).gsub("\"", "").split(",")
-#   next if !Restaurant.exists?(phone: components[6])
+#   next if !Restaurant.exists?(phone: components[6].to_i)
 #   next if !Cuisine.exists?(cuisinecode: components[7])
-#   next if RestaurantCuisine.exists?(restaurant_id: Restaurant.find_by(phone: components[6]).id)
+#   next if RestaurantCuisine.exists?(restaurant_id: Restaurant.find_by(phone: components[6].to_i).id)
 #   join = RestaurantCuisine.new
-#   join.restaurant_id = Restaurant.find_by(phone: components[6]).id 
+#   join.restaurant_id = Restaurant.find_by(phone: components[6].to_i).id 
 #   join.cuisine_id = Cuisine.find_by(cuisinecode: components[7]).id 
 #   join.save
 # end
 # f.close
 
-# ------------------ RESTAURANTVIOLATION
+# # ------------------ RESTAURANTVIOLATION
 # RestaurantViolation.delete_all
 
 # f = File.new("./app/public/textfiles/WebExtract.txt", 'r')
@@ -117,7 +117,7 @@ VALID_LETTERS = ["B","C","Z"]
 #   next if (Date.today - d) > 200      
 
 #   next if !Violation.exists?(vio_code: components[10])
-#   rv_array = RestaurantViolation.where(restaurant_id: Restaurant.find_by(phone: components[6]).id)
+#   rv_array = RestaurantViolation.where(restaurant_id: Restaurant.find_by(phone: components[6].to_i).id)
 #   found_dupe = false
 #   rv_array.each do |rv|
 #     found_dupe = true if rv.violation_id == Violation.find_by(vio_code: components[10]).id
@@ -125,7 +125,7 @@ VALID_LETTERS = ["B","C","Z"]
 #   next if found_dupe
 
 #   join = RestaurantViolation.new
-#   join.restaurant_id = Restaurant.find_by(phone: components[6]).id 
+#   join.restaurant_id = Restaurant.find_by(phone: components[6].to_i).id 
 #   join.violation_id = Violation.find_by(vio_code: components[10]).id 
 #   join.save
 
@@ -136,12 +136,12 @@ VALID_LETTERS = ["B","C","Z"]
 # ------------------ ZIPCODES
 # Zipcode.delete_all
 # Restaurant.all_zips.each do |z|
-#   a = Zipcode.find_or_create_by(zip: z)
+#   a = Zipcode.find_or_create_by(zip: z.to_s)
 #   a.save
 # end
 
 
-# ------------------ CUISINEZIPCODES
+# # ------------------ CUISINEZIPCODES
 # CuisineZipcode.delete_all
 # Zipcode.all.each do |zip|
 #   zip.restaurants.each do |r|
@@ -151,7 +151,7 @@ VALID_LETTERS = ["B","C","Z"]
 
 # ------------------ SEED ZIPCODE ID FOR RESTAURANTS
 # Restaurant.all.each do |r|
-#   z = Zipcode.find_by(zip: r.zip)
+#   z = Zipcode.find_by(zip: r.zip.to_s)
 #   r.zipcode_id = z.id
 #   r.save
 # end
