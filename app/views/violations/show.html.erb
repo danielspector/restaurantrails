@@ -1,4 +1,3 @@
-
 <h2>Violation <%= @violation.vio_code %></h2>
 <h3><%= @violation.description %></h3>
 <% if @violation.critical_vio == true %>
@@ -19,5 +18,5 @@
     <%end%>
   <%end%>
 <% end %>
-
-<%= link_to "Violation Index", violations_path %>
+<br/>
+<%= link_to "Violation Index", violations_path, :class => "button" %>

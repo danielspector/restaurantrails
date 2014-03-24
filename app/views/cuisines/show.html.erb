@@ -1,26 +1,16 @@
-<head>
-</head>
-  <title>
-    <%=@cuisine.description%>
-  </title>
-</head>
-
-  <body>
-
-  <div class="medium-12 columns">
-    <h2><%= @cuisine.description %> Restaurant High Violators:</h2>
-    <% hash = @cuisine.restaurants.group_by {|r| r.zip} %>
-    <% hash.sort.each do |k, v|%>
-    <br/>
-    <%= link_to k, zip_path(k) %>
-    <br>
-      <ul>
-        <%v.each do |r|%>
-          <li><%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true  %></li>
-        <%end%>
-      </ul>
-    <%end%>
+<div class="medium-12 columns">
+  <h2><%= @cuisine.description %> Restaurant High Violators:</h2>
+  <% hash = @cuisine.restaurants.group_by {|r| r.zip} %>
+  <% hash.sort.each do |k, v|%>
+  <br/>
+  <%= link_to k, zip_path(k) %>
+  <br>
+    <ul>
+      <%v.each do |r|%>
+        <li><%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true  %></li>
+      <%end%>
     </ul>
+  <%end%>
+  </ul>
   <a href="/cuisines" class="button [radius round]">Back to Cuisines Index</a>
-  </div>
-</body>
+</div>

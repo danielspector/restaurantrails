@@ -10,7 +10,7 @@ class ZipcodesController < ApplicationController
     @search = Zipcode.search(params[:q])
     if params[:q] && params[:q][:zip_cont]
       if params[:q][:zip_cont].length != 5 || !Zipcode.find_by(zip: params[:q][:zip_cont])
-        flash[:errors] = "Invalid zipcode or not in NYC!"
+        flash[:notice] = "Invalid zipcode or not in NYC!"
         params.delete(:q)
       else
         @found_zip = @search.result

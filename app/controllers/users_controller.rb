@@ -13,7 +13,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      redirect_to restaurants_path 
+      flash[:notice] = "Your form filling-in skills are lacking.  Try again!"
+      render 'new'
     end
   end
 
@@ -25,9 +26,11 @@ class UsersController < ApplicationController
     @user.update(user_params)
 
     if @user.save
-      redirect_to @user, notice: "User successfully edited"
+      flash[:notice] = "User successfully edited"
+      redirect_to @user
     else
-      render 'edit', notice: "Something went wrong"
+      flash[:notice] = "Something went wrong.  Try again."
+      render 'edit'
     end
   end
 

@@ -1,16 +1,22 @@
 <div class="medium-12 columns">
+  <% if flash[:notice] %>
+    <div data-alert class="alert-box warning round">
+      <%= flash[:notice] %>
+    </div>
+    <% flash.delete(:notice) %>
+  <% end %>
+
   <h2><%= @user.name %></h2>
-  <br>
   <%= @user.email %>
 
-  <h2>Zipcodes</h2>
+  <h2>Favorite Zipcodes</h2>
   <ul>
   <% @user.zipcodes.each do |zip| %>
     <li><%= link_to zip.zip, zip_path(zip), 'data-no-turbolink' => true %></li>
   <% end %>
   </ul>
 
-  <h2>Restaurants</h2>
+  <h2>Restaurant Watchlist</h2>
   <% if @user.restaurants.length == 0 %>
    <p>You have no restaurants on your watchlist.</p>
   <% else %>
