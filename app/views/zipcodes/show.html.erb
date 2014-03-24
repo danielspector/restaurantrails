@@ -12,7 +12,7 @@
         <h3>Most Common Violations in this Zipcode</h3>
         <ul>
         <% @zip.most_common_vios.each do |v| %>
-        <li>Found in <%= v[1] %> restaurants: <%= "#{v[0].description}" %></li>
+        <li>Found in <span class="blue"><%= v[1] %></span> restaurants: <span class="blue"><%= link_to v[0].description, violation_path(v[0]) %></span></li>
         <% end %>
         </ul>
       </div>

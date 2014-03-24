@@ -26,6 +26,10 @@
   /*margin-left: 35px;*/
 }
 
+span.blue {
+  color: #008CBA;
+}
+
 .restaurant-info {
   text-align: center;
   /*padding-right: 100px;*/
