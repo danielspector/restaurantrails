@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20140318191045) do
     t.integer "building_number"
     t.string  "street_name"
     t.integer "zip"
-    t.integer "phone"
+    t.decimal "phone"
     t.string  "date"
     t.integer "cuisinecode"
     t.integer "score"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20140318191045) do
   create_table "violations", force: true do |t|
     t.boolean "critical_vio"
     t.string  "vio_code"
-    t.string  "description"
+    t.text    "description"
     t.string  "end_date"
   end
 

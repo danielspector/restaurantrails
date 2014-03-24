@@ -5,7 +5,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.integer :building_number
       t.string :street_name
       t.integer :zip
-      t.integer :phone
+      t.decimal :phone
       t.string :date
       t.integer :cuisinecode
       t.integer :score

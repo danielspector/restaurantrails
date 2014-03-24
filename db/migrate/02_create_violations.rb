@@ -3,7 +3,7 @@ class CreateViolations < ActiveRecord::Migration
     create_table :violations do |t|
       t.boolean :critical_vio
       t.string :vio_code
-      t.string :description
+      t.text :description
     end
   end
 end
