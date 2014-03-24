@@ -19,7 +19,6 @@ class Zipcode < ActiveRecord::Base
     all_vios.each{|key| frequencies[key] += 1}
     
     freq_array = frequencies.values.sort
-
     first  = freq_array[-1]
     third  = freq_array[-3]
     second = freq_array[-2]
@@ -27,7 +26,7 @@ class Zipcode < ActiveRecord::Base
 
     i = 2
     next_highest = freq_array[-i - 1]
-    
+    binding.pry
     while freq_array[-i] ==  next_highest
       top <<  next_highest
       i += 1
