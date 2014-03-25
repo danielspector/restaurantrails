@@ -35,7 +35,7 @@ class Restaurant < ActiveRecord::Base
 
 
   def phone_num
-    self.phone.to_s.strip.split('').insert(3, "-").insert(7, "-").join()
+    self.phone.to_s.strip.split('').insert(3, "-").insert(7, "-").join()[0,12]
   end
 
   def self.zip_list(zip_code)

@@ -1,10 +1,5 @@
 <div class="medium-7 columns">
-  <% if flash[:notice] %>
-    <div data-alert class="alert-box warning round">
-      <%= flash[:notice] %>
-    </div>
-    <% flash.delete(:notice) %>
-  <% end %>
+  <%= render 'errors' %>
   <h1>Sign up!</h1>
   <%= render 'form' %>
 </div>

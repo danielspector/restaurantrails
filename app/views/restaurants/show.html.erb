@@ -58,8 +58,7 @@
         </h2>
         <ol>
           <% @restaurant.violations.each do |vio| %>
-            <li><%= link_to vio.description, violation_path(vio) %>
-            </li>
+            <%= content_tag :li, link_to(vio.description, violation_path(vio.id)) %>
           <% end %>
         </ol>
       </div>
@@ -82,7 +81,7 @@
           </div>
         <% end %>
         <div class="medium-6 columns">
-          <a href="/restaurants" class="button [radius round]">Back to Restaurants Index</a>
+          <a href="/restaurants" class="button">Back to Restaurants Index</a>
         </div>
       </div>
     </div>

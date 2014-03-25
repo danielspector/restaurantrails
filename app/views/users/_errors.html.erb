@@ -1,0 +1,6 @@
+<% if flash[:notice] %>
+  <div data-alert class="alert-box warning round">
+    <%= flash[:notice] %>
+  </div>
+  <% flash.delete(:notice) %>
+<% end %>

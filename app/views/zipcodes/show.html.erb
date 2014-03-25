@@ -22,29 +22,8 @@
     </div>
     <div class="medium-12 columns">
       <h3>Worst Scoring Restaurants in <%= @zip.zip %></h3><br/>
-      <% @zip.restaurants.sort {|a,b| b.score <=> a.score}.each do |r| %>
-      <h3 id="<%= r.name %>"><%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %></h3>
-      <h4><%= r.phone_num %></h4>
-      <a href="/<%= r.zip %>"><h4><%= r.address %></h4></a>
-      <% r.cuisines.each do |c| %>
-        <a href="/cuisine/<%=c.id%>"><h3><%= c.description %></h3></a>
-      <% end %>
-      <h3><%= 
-        if r.grade == "B"
-          image_tag 'b.jpg'
-        elsif r.grade == "C"
-          image_tag 'c.jpg'
-        else
-          image_tag 'pending.jpg'
-        end %>
-        Violation points: <%= r.score %>
-      </h3>
-      <ol>
-        <% r.violations.each do |vio| %>
-          <li><a href="/violations/<%=vio.id%>"><%= vio.description %></a></li>
-        <% end %>
-      </ol><br>
-      <% end %>
+      <% @restaurants = @zip.restaurants.sort {|a,b| b.score <=> a.score} %>
+      <%= render @restaurants %>
     </div>
   </div>
 </div>

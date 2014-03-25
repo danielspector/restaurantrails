@@ -11,9 +11,9 @@
     <h2>Restaurants with this violation</h2>
     <% hash = @violation.restaurants.group_by {|r| r.zip} %>
     <% hash.sort.each do |k, v|%>
-      <h4><%= link_to k, zip_path(k) %></h4>
+      <h4><%= link_to k, zip_path(k), 'data-no-turbolink' => true %></h4>
       <%v.each do |r|%>
-        <%= link_to r.name, restaurant_path(r)%><br/>
+        <%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %><br/>
       <%end%><br/>
     <%end%>
   <% end %>
