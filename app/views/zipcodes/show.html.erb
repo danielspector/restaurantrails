@@ -9,7 +9,7 @@
   <div class="medium-10 columns">
     <div>
       <div class="medium-6 columns">
-        <h3>Most Common Violations in this Zipcode</h3>
+        <h3>Most Common Violations in <%= @zip.zip %></h3>
         <ul>
         <% @zip.most_common_vios.each do |v| %>
         <li>Found in <span class="blue"><%= v[1] %></span> restaurants: <span class="blue"><%= link_to v[0].description, violation_path(v[0]) %></span></li>
@@ -21,10 +21,11 @@
       </div>
     </div>
     <div class="medium-12 columns">
+      <h3>Worst Scoring Restaurants in <%= @zip.zip %></h3><br/>
       <% @zip.restaurants.sort {|a,b| b.score <=> a.score}.each do |r| %>
-      <h2 id="<%= r.name %>"><%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %></h2>
-      <h3><%= r.phone_num %></h3>
-      <a href="/<%= r.zip %>"><h3><%= r.address %></h3></a>
+      <h3 id="<%= r.name %>"><%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %></h3>
+      <h4><%= r.phone_num %></h4>
+      <a href="/<%= r.zip %>"><h4><%= r.address %></h4></a>
       <% r.cuisines.each do |c| %>
         <a href="/cuisine/<%=c.id%>"><h3><%= c.description %></h3></a>
       <% end %>
