@@ -14,8 +14,8 @@
       <h4><%= link_to k, zip_path(k), 'data-no-turbolink' => true %></h4>
       <%v.each do |r|%>
         <%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %><br/>
-      <%end%><br/>
-    <%end%>
+      <% end %><br/>
+    <% end %>
   <% end %>
   <br/>
   <%= link_to "Back to Violation Index", violations_path, :class => "button" %>
