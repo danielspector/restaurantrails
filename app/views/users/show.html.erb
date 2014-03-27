@@ -16,10 +16,9 @@
    <p>You have no restaurants on your watchlist.</p>
   <% else %>
   <ul>
-  <% @user.restaurants.each do |restaurant| %>
-      <li><%= link_to restaurant.name, restaurant_path(restaurant), 'data-no-turbolink' => true %>
-      </li>
-  <% end %>
+    <% @user.restaurants.each do |restaurant| %>
+      <li><%= link_to restaurant.name, restaurant_path(restaurant), 'data-no-turbolink' => true %></li>
+    <% end %>
   </ul>
   <% end %>
 
