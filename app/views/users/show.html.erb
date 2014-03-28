@@ -1,4 +1,4 @@
-<div class="medium-12 columns">
+<div class="medium-6 columns">
   <%= render 'errors' %>
 
   <h2><%= @user.name %></h2>
@@ -7,7 +7,14 @@
   <h2>Favorite Zipcodes</h2>
   <ul>
   <% @user.zipcodes.each do |zip| %>
-    <li><%= link_to zip.zip, zip_path(zip), 'data-no-turbolink' => true %></li>
+    <div class="medium-3 columns">
+      <%= link_to zip.zip, zip_path(zip), 'data-no-turbolink' => true %>
+    </div>
+    <div class="medium-9 columns">
+      <div class="destroy zip">
+        <button class="tiny alert round">✖</button>
+      </div>
+    </div>
   <% end %>
   </ul>
 

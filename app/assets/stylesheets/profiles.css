@@ -4,6 +4,15 @@
   font-family: 'Denk One', sans-serif;
 }
 
+.destroy {
+  margin: auto 0;
+  color: #a88a8a;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  border: 0;
+  background: transparent;
+}
+
 #logo-content {
   text-align: center;
   vertical-align: middle;

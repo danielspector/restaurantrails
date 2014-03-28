@@ -18,6 +18,13 @@ class User < ActiveRecord::Base
   
   attr_reader :zipcode_list, :cuisine_list
 
+  def zipcodes_as_a_string
+    result = ""
+    self.zipcodes.each { |z| result = result + z.zip.to_s + ", " }
+    result = result[0,result.length-2] if result.length > 0
+    result
+  end
+
   def zipcode_list=(params)
     params.gsub(" ", "").split(",").each do |zip|
       if Zipcode.find_by(zip: zip) && !self.zipcodes.include?(Zipcode.find_by(zip: zip))
