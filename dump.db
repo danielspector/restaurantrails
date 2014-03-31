@@ -364,9 +364,11 @@ CREATE TABLE users (
     id integer NOT NULL,
     name character varying(255),
     email character varying(255),
-    password_digest character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    facebook_id integer,
+    location character varying(255),
+    image_url character varying(255)
 );
 
 
@@ -17873,6 +17875,7 @@ COPY schema_migrations (version) FROM stdin;
 20140317235115
 20140317235121
 20140318191045
+20140328155407
 \.
 
 
@@ -17927,6 +17930,10 @@ SELECT pg_catalog.setval('user_violations_id_seq', 1, false);
 
 COPY user_zipcodes (id, user_id, zipcode_id) FROM stdin;
 1	1	43
+3	1	149
+4	2	149
+5	3	149
+6	4	149
 \.
 
 
@@ -17934,15 +17941,15 @@ COPY user_zipcodes (id, user_id, zipcode_id) FROM stdin;
 -- Name: user_zipcodes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: caguthrie
 --
 
-SELECT pg_catalog.setval('user_zipcodes_id_seq', 1, true);
+SELECT pg_catalog.setval('user_zipcodes_id_seq', 6, true);
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: caguthrie
 --
 
-COPY users (id, name, email, password_digest, created_at, updated_at) FROM stdin;
-1	Chris	c@c.com	$2a$10$ICMcHZFn8//DVHD61vb1r.Yo.QPlGpzwg0O9s23byPTcCBq9g3Z26	2014-03-24 17:51:18.638885	2014-03-24 17:51:18.638885
+COPY users (id, name, email, created_at, updated_at, facebook_id, location, image_url) FROM stdin;
+4	Chris Guthrie	hf2015@gmail.com	2014-03-28 18:57:29.036154	2014-03-28 18:57:29.036154	3312213	New York, New York	http://graph.facebook.com/3312213/picture
 \.
 
 
@@ -17950,7 +17957,7 @@ COPY users (id, name, email, password_digest, created_at, updated_at) FROM stdin
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: caguthrie
 --
 
-SELECT pg_catalog.setval('users_id_seq', 1, true);
+SELECT pg_catalog.setval('users_id_seq', 4, true);
 
 
 --
