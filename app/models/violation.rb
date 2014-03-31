@@ -5,6 +5,10 @@ class Violation < ActiveRecord::Base
   has_many :user_violations
   has_many :users, through: :user_violations
 
+  def critical?
+    self.critical_vio
+  end
+
   def self.most_common
     frequency_sort = Violation.all.sort! { |a,b| a.restaurants.length <=> b.restaurants.length }
     first = frequency_sort[-1]

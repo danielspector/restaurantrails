@@ -5,18 +5,22 @@
   <%= @user.email %>
 
   <h2>Favorite Zipcodes</h2>
-  <ul>
-  <% @user.zipcodes.each do |zip| %>
-    <div class="medium-3 columns">
-      <%= link_to zip.zip, zip_path(zip), 'data-no-turbolink' => true %>
-    </div>
-    <div class="medium-9 columns">
-      <div class="destroy zip">
-        <button class="tiny alert round">✖</button>
+  <% if @user.zipcodes.length == 0 %>
+    <p>You have no zipcodes on your watchlist.</p>
+  <% else %>
+    <ul>
+      <% @user.zipcodes.each do |zip| %>
+      <div class="whole_zip">
+        <div class="medium-3 columns">
+              <%= link_to zip.zip, zip_path(zip.id), 'data-no-turbolink' => true %>
+        </div>
+        <!-- <div class="medium-9 columns"> -->
+        <%= button_to "✖", remove_zip_path(zip.id), remote: true, :class => "tiny alert round", :method => :get %>
+        <!-- </div> -->
       </div>
-    </div>
+      <% end %>
+    </ul>
   <% end %>
-  </ul>
 
   <h2>Restaurant Watchlist</h2>
   <% if @user.restaurants.length == 0 %>
