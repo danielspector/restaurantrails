@@ -1,23 +1,28 @@
 <div id="content-below-bar">
-  <% if current_user == nil || !current_user.zipcodes.include?(@zip) %>
-    <div class="medium-6 columns">
-      <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist"%>
-      <div class="alert-box add_zip_show"><p> You have successfully subscribed!</p></div>
-    </div>
-    <div class="medium-6 columns">
-        <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist no_display" %>
+  <div class="row">
+    <% if current_user == nil || !current_user.zipcodes.include?(@zip) %>
+      <div class="medium-6 columns">
+        <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist"%>
+        <div class="alert-box add_zip_show"><p> You have successfully subscribed!</p></div>
         <div class="alert-box remove_zip_show"><p> You have successfully unsubscribed!</p></div>
-    </div>
-  <% else %>
-    <div class="medium-6 columns">
-      <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist no_display"%>
-      <div class="alert-box add_zip_show"><p> You have successfully subscribed!</p></div>
-    </div>
-    <div class="medium-6 columns">
-        <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist" %>
-        <div class="alert-box remove_zip_show"><p> You have successfully unsubscribed!</p></div>
-    </div>
-  <% end %>
+      </div>
+      <div class="medium-6 columns">
+          <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist no_display" %>
+      </div>
+    <% else %>
+      <div class="medium-6 columns">
+        <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist no_display"%>
+      </div>
+      <div class="medium-6 columns">
+          <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist" %>
+      </div>
+    <% end %>
+    <%= link_to "Zipcode Index", zipcodes_path, :class => "button" %>
+  </div>
+  <div class="row">
+    <div class="alert-box add_zip_show"><p> You have successfully subscribed!</p></div>
+    <div class="alert-box remove_zip_show"><p> You have successfully unsubscribed!</p></div>
+  </div>
   <div class="medium-2 columns">
     <h3>Find by Name in <%= @zip.zip %></h3>
     <% @zip.restaurants.sort {|a,b| a.name <=> b.name}.each do |r| %>
