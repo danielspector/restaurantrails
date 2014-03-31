@@ -5,18 +5,30 @@
     <h1 class="red">This violation is critical</h1>
   <% end %>
   <br>
-  <% if current_user == nil || !current_user.violations.include?(@violation) %>
-    <div class="medium-6 columns">
-      <%= link_to "Add to Watchlist", add_violation_path(@violation.id), remote: true, class: "button watchlist"%>
-      <div class="alert-box add_violation"><p> You have successfully subscribed!</p></div>
-    </div>
-  <% else %>
-    <div class="medium-6 columns">
-        <%= link_to "Remove from Watchlist", remove_violation_path(@violation.id), remote: true, class: "button watchlist" %>
-        <div class="alert-box remove_violation"><p> You have successfully unsubscribed!</p></div>
-    </div>
-  <% end %>
-  <%= link_to "Back to Violation Index", violations_path, :class => "button" %>
+  <div class="row">
+    <% if current_user == nil || !current_user.violations.include?(@violation) %>
+      <div class="medium-6 columns">
+        <%= link_to "Add to Watchlist", add_violation_path(@violation.id), remote: true, class: "button add_vio_watchlist"%>
+      </div>
+    
+      <div class="medium-6 columns">
+          <%= link_to "Remove from Watchlist", remove_violation_path(@violation.id), remote: true, class: "button remove_vio_watchlist no_display" %>
+      </div>
+    <% else %>
+      <div class="medium-6 columns">
+        <%= link_to "Add to Watchlist", add_violation_path(@violation.id), remote: true, class: "button add_vio_watchlist no_display"%>
+      </div>
+    
+      <div class="medium-6 columns">
+          <%= link_to "Remove from Watchlist", remove_violation_path(@violation.id), remote: true, class: "button remove_vio_watchlist" %>
+      </div>
+    <% end %>
+    <%= link_to "Violation Index", violations_path, :class => "button" %>
+  </div>
+  <div class="row">
+    <div class="alert-box add_violation"><p> You have successfully subscribed!</p></div>
+    <div class="alert-box remove_violation"><p> You have successfully unsubscribed!</p></div>
+  </div>
   <br>
   <% if @violation.restaurants.length == 0 %>
     <h2>There are no restaurants with this violation.</h2>
