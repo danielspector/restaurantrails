@@ -1,8 +1,8 @@
 <div class="medium-7 columns">
   <%= render :partial => 'users/errors' %>
   <%= search_form_for @search do |f| %>
-    <%= f.label :zip_cont, "Zip Code:" %>
-    <%= f.number_field :zip_cont %>
+    <%#= f.label :zip_cont, "Zip Code:" %>
+    <%= f.number_field :zip_cont, placeholder: "Zip Code..." %>
     <button class="button">Search Zip Code</button>
   <% end %>
 </div>

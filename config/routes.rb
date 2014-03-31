@@ -10,6 +10,7 @@ post 'restaurants' => 'restaurants#index'
 get "/restaurants/add_restaurant/:id" => 'restaurants#add_restaurant', as: 'add_restaurant'
 get "/restaurants/remove_restaurant/:id" => 'restaurants#remove_restaurant', as: 'remove_restaurant'
 get '/restaurants/:id' => 'restaurants#show', as: 'restaurant'
+get '/users/:id/remove_restaurant_from_profile' => 'users#remove_restaurant_from_profile', as: 'remove_restaurant_from_profile'
 
 get '/violations/:id' => 'violations#show', as: 'violation'
 get '/violations' => 'violations#index', as: 'violations'

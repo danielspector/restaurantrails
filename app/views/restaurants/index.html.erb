@@ -6,8 +6,8 @@
     <% flash.delete(:notice) %>
   <% end %>
   <%= search_form_for @search do |f| %>
-    <%= f.label :name_cont, "Name Contains:" %>
-    <%= f.text_field :name_cont %>
+    <%#= f.label :name_cont, "Name Contains:" %>
+    <%= f.text_field :name_cont, :placeholder => "Name Contains..." %>
     <button class="button">Search Restaurants</button>
   <% end %>
 </div>

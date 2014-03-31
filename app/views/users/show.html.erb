@@ -4,7 +4,7 @@
   <h2><%= @user.name %></h2>
   <%= @user.email %>
 
-  <h2>Favorite Zipcodes</h2>
+  <h2>Zipcode Watchlist</h2>
   <% if @user.zipcodes.length == 0 %>
     <p>You have no zipcodes on your watchlist.</p>
   <% else %>
@@ -15,7 +15,7 @@
               <%= link_to zip.zip, zip_path(zip.id), 'data-no-turbolink' => true %>
         </div>
         <!-- <div class="medium-9 columns"> -->
-        <%= button_to "✖", remove_zip_path(zip.id), remote: true, :class => "tiny alert round", :method => :get %>
+        <%= button_to "✖", remove_zip_path(zip.id), remote: true, :class => "tiny alert round zip_remove", :method => :get %>
         <!-- </div> -->
       </div>
       <% end %>
@@ -28,8 +28,11 @@
   <% else %>
   <ul>
     <% @user.restaurants.each do |restaurant| %>
-      <li><%= link_to restaurant.name, restaurant_path(restaurant), 'data-no-turbolink' => true %></li>
-    <% end %>
+    <div class="whole_rest">
+        <li><%= link_to restaurant.name, restaurant_path(restaurant), 'data-no-turbolink' => true %>
+      <%= button_to "✖", remove_restaurant_from_profile_path(restaurant.id), remote: true, :class => "tiny alert round rest_remove", :method => :get %></li>
+      <% end %>
+    </div>
   </ul>
   <% end %>
 

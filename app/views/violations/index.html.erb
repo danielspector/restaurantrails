@@ -1,8 +1,13 @@
-<div class="medium-7 columns">
+<div class="large-6 columns row collapse">
   <%= search_form_for @search do |f| %>
-    <%= f.label :description_cont, "Description Contains:" %>
-    <%= f.text_field :description_cont %>
-    <button class="button">Search Violations</button>
+    <%#= f.label :description_cont, "Description Contains:" %>
+    <div class="small-8 columns">
+      <%= f.text_field :description_cont, placeholder: "Keyword in description..." %>
+    </div>
+    <div class="small-4 columns">
+      <%= f.submit 'Search Violations', :class => "button postfix" %>
+    </div>
+    <!-- <button class="button small-2 columns">Search Violations</button> -->
   <% end %>
 </div>
 <div class="row">
