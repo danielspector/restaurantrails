@@ -12,16 +12,14 @@
       <% @user.zipcodes.each do |zip| %>
       <div class="whole_zip">
         <div class="medium-3 columns">
-              <%= link_to zip.zip, zip_path(zip), 'data-no-turbolink' => true %>
-        </div>
-        <!-- <div class="medium-9 columns"> -->
+        <%= link_to zip.zip, zip_path(zip), 'data-no-turbolink' => true %>
         <%= button_to "✖", remove_zip_path(zip), remote: true, :class => "tiny alert round zip_remove", :method => :get %>
-        <!-- </div> -->
+        </div>
       </div>
       <% end %>
     </ul>
   <% end %>
-
+<br>
   <h2>Restaurant Watchlist</h2>
   <% if @user.restaurants.length == 0 %>
    <p>You have no restaurants on your watchlist.</p>
@@ -35,7 +33,7 @@
     </div>
   </ul>
   <% end %>
-
+<br>
   <h2>Violation Watchlist</h2>
   <% if @user.violations.length == 0 %>
    <p>You have no violations on your watchlist.</p>
