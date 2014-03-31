@@ -2,9 +2,22 @@
   <h2>Violation <%= @violation.vio_code %></h2>
   <h3><%= @violation.description %></h3>
   <% if @violation.critical_vio == true %>
-  <h1 class="red">This violation is critical</h1>
+    <h1 class="red">This violation is critical</h1>
   <% end %>
-
+  <br>
+  <% if current_user == nil || !current_user.violations.include?(@violation) %>
+    <div class="medium-6 columns">
+      <%= link_to "Add to Watchlist", add_violation_path(@violation.id), remote: true, class: "button watchlist"%>
+      <div class="alert-box add_violation"><p> You have successfully subscribed!</p></div>
+    </div>
+  <% else %>
+    <div class="medium-6 columns">
+        <%= link_to "Remove from Watchlist", remove_violation_path(@violation.id), remote: true, class: "button watchlist" %>
+        <div class="alert-box remove_violation"><p> You have successfully unsubscribed!</p></div>
+    </div>
+  <% end %>
+  <%= link_to "Back to Violation Index", violations_path, :class => "button" %>
+  <br>
   <% if @violation.restaurants.length == 0 %>
     <h2>There are no restaurants with this violation.</h2>
   <% else %>
@@ -18,5 +31,5 @@
     <% end %>
   <% end %>
   <br/>
-  <%= link_to "Back to Violation Index", violations_path, :class => "button" %>
 </div>
+

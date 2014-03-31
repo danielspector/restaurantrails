@@ -41,6 +41,10 @@ class UsersController < ApplicationController
     redirect_to new_user_path, notice:  "Sorry to see you go :'("
   end
 
+  def remove_violation_from_profile
+    current_user.user_violations.find_by(violation_id: params[:id]).destroy 
+  end
+
   def remove_restaurant_from_profile
     current_user.user_restaurants.find_by(restaurant_id: params[:id]).destroy 
   end
