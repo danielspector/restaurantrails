@@ -1,0 +1,73 @@
+<% if @zip %>
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALUMEVvLlZ-4U2LSSVm3LhwtjbIO223qY&sensor=false">
+  </script>
+  <% 2.times { |i| @worst[i+1] = @worst[i] if @worst[i+1] == nil } %>
+  <% coords1 = Geocoder.coordinates(@worst[0].address) %>
+  <% coords2 = Geocoder.coordinates(@worst[1].address) %>
+  <% coords3 = Geocoder.coordinates(@worst[2].address) %>
+  <% zip_coords = Geocoder.coordinates(@zip.zip) %>
+  <script type="text/javascript">
+
+      function initialize() {
+
+        var ll_worst1 = new google.maps.LatLng(<%=coords1[0]%>, <%=coords1[1]%>);
+        var ll_worst2 = new google.maps.LatLng(<%=coords2[0]%>, <%=coords2[1]%>);
+        var ll_worst3 = new google.maps.LatLng(<%=coords3[0]%>, <%=coords3[1]%>);
+
+        var worst_string1 = "<%= "#{@worst[0].name} #1 worst in #{@zip.zip}" %>";
+        var worst_string2 = "<%= "#{@worst[1].name} #2 worst in #{@zip.zip}" %>";
+        var worst_string3 = "<%= "#{@worst[2].name} #3 worst in #{@zip.zip}" %>";
+
+        var worst_info1 = new google.maps.InfoWindow({
+          content: worst_string1
+        });
+        var worst_info2 = new google.maps.InfoWindow({
+          content: worst_string2
+        });
+        var worst_info3 = new google.maps.InfoWindow({
+          content: worst_string3
+        });
+
+
+        var mapOptions = {
+          center: new google.maps.LatLng(<%=zip_coords[0]%>, <%=zip_coords[1]%>),
+          zoom: 13
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+
+        var marker_worst1 = new google.maps.Marker({
+          position: ll_worst1,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          title: "#1 Worst Restaurant"
+        }); 
+
+        var marker_worst2 = new google.maps.Marker({
+          position: ll_worst2,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          title: "#2 Worst Restaurant"
+        }); 
+
+        var marker_worst3 = new google.maps.Marker({
+          position: ll_worst3,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          title: "#3 Worst Restaurant"
+        });         
+
+        google.maps.event.addListener(marker_worst1, 'click', function() {
+          worst_info1.open(map,marker_worst1);
+        });
+        google.maps.event.addListener(marker_worst2, 'click', function() {
+          worst_info2.open(map,marker_worst2);
+        });
+        google.maps.event.addListener(marker_worst3, 'click', function() {
+          worst_info3.open(map,marker_worst3);
+        });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+<% end %>

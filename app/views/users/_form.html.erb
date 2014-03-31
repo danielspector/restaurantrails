@@ -5,14 +5,11 @@
   <%= f.label :email %>
   <%= f.text_field :email, value: @user.email %>
   <br>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <br>
   <label for="zipcode_list">Add your favorite zipcode(s), separated by commas.</label>
   <%= f.text_field :zipcode_list, value: @user.zipcodes_as_a_string %>
   <br>
+  <%= f.hidden_field :location, value: @user.location %>
+  <%= f.hidden_field :image_url, value: @user.image_url %>
+  <%= f.hidden_field :facebook_id, value: @user.facebook_id %>
   <button class="button">Submit</button>
 <% end %>

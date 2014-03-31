@@ -20,8 +20,10 @@ get '/zipcodes' => 'zipcodes#index'
 
 delete '/sessions' => 'sessions#destroy'
 get '/sessions/new' => 'sessions#new', as: 'new_session'
-post '/sessions' => 'sessions#login'
-
+post '/sessions' => 'sessions#create'
+get 'auth/:provider/callback' => 'sessions#create'
+get 'auth/failure' => redirect('/')
+get 'signout' => 'sessions#destroy'
 
 get "/users/new" => 'users#new', as: "new_user"
 post "/users" => 'users#create'

@@ -9,6 +9,8 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
+
+    <%= render '/zipcodes/map' if content_for?(:zip_nav) %>
   </head>
 
   <body>
@@ -29,16 +31,18 @@
           <li<%= yield(:vio_nav) if content_for?(:vio_nav) %>><%= link_to "Violation Search", violations_path %>
           </li>
           <li<%= yield(:cuis_nav) if content_for?(:cuis_nav) %>><%= link_to "Cuisine List", cuisines_path %></li>
-          <li class="has-dropdown">
-            <a href="#">User Info</a>
-            <ul class="dropdown">
-              <% if signed_in? %>
-              <li><%= link_to "Log Out", "/sessions", :method => :delete %></li>
-              <li><%= link_to "My Profile", user_path(current_user)%></li>
-              <% else %>
-              <li><%= link_to "Log In", new_session_path %> or <%= link_to "Sign Up", new_user_path %></li>
-              <% end %>
-            </ul>
+          <li>
+            <% if !signed_in? %>
+              <%= link_to image_tag('active_200.png'), "/auth/facebook" %>
+            <% else %>
+              <li class="has-dropdown">  
+                <a href="#">Hi, <%= current_user.name %>!</a>
+                <ul class="dropdown">
+                  <li><%= link_to "Log Out", "/signout" %></li>
+                  <li><%= link_to "My Profile", user_path(current_user)%></li>
+                </ul>
+              </li>
+            <% end %>
           </li>
         </ul>
 

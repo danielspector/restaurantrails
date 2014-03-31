@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
-    @cuisines = Cuisine.all
   end
 
   def create
@@ -45,7 +44,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :zipcode_list, :restaurant_list, :cuisine_list)
+    params.require(:user).permit(:name, :email, :facebook_id, :location, :image_url, :zipcode_list, :restaurant_list)
   end
 
   def set_user

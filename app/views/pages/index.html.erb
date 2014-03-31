@@ -1,11 +1,10 @@
 <div class="medium-12 columns" id="logo-content">
   <h1 class="logo"><br/>Avoid</h1> 
   <h3 class="logo">What Restaurant is Eating You?</h3>
-  <% if signed_in? %>
-    <%= link_to "Log Out", "/sessions", :method => :delete, :class => "button small" %>
-    <%= link_to "My Profile", user_path(current_user), :class => "button small" %>
+  <% if !signed_in? %>
+    <%= link_to image_tag('active_200.png'), "/auth/facebook" %>
   <% else %>
-    <%= link_to "Log In", new_session_path, :class => "button small" %>
-    <%= link_to "Sign Up", new_user_path, :class => "button small" %>
+    <%= link_to "Log Out", "/signout", :class => "button" %>
+    <%= link_to "My Profile", user_path(current_user), :class => "button" %>
   <% end %>
 </div>

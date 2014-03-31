@@ -38,6 +38,7 @@ end
 
 gem "binding_of_caller"
 
+gem 'omniauth-facebook'
 gem 'titleize'
 gem 'geocoder'
 gem 'thin'

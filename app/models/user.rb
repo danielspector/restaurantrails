@@ -11,10 +11,7 @@ class User < ActiveRecord::Base
   has_many :user_violations
   has_many :violations, through: :user_violations
 
-  has_secure_password
-
-  validates_presence_of :name, :email, :password, :password_confirmation
-  validates_uniqueness_of :email
+  validates_presence_of :name, :email, :location, :facebook_id, :image_url
   
   attr_reader :zipcode_list, :cuisine_list
 
