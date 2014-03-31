@@ -1,4 +1,15 @@
 <div id="content-below-bar">
+  <% if current_user == nil || !current_user.zipcodes.include?(@zip) %>
+    <div class="medium-6 columns">
+      <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button watchlist"%>
+      <div class="alert-box add_zip_show"><p> You have successfully subscribed!</p></div>
+    </div>
+  <% else %>
+    <div class="medium-6 columns">
+        <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button watchlist" %>
+        <div class="alert-box remove_zip_show"><p> You have successfully unsubscribed!</p></div>
+    </div>
+  <% end %>
   <div class="medium-2 columns">
     <h3>Find by Name in <%= @zip.zip %></h3>
     <% @zip.restaurants.sort {|a,b| a.name <=> b.name}.each do |r| %>

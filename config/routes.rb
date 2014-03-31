@@ -21,6 +21,8 @@ get '/violations/remove_violation/:id' => 'violations#remove_violation', as: 're
 
 get '/zipcodes/:id' => 'zipcodes#show', as: 'zip'
 get '/zipcodes' => 'zipcodes#index'
+get "/zipcodes/add_zipcode/:id" => 'zipcodes#add_zipcode', as: 'add_zipcode_show'
+get '/zipcodes/remove_zipcode/:id' => 'zipcodes#remove_zipcode', as: 'remove_zipcode_show'
 
 
 delete '/sessions' => 'sessions#destroy'

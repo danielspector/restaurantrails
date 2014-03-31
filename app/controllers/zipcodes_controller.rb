@@ -26,6 +26,17 @@ class ZipcodesController < ApplicationController
     end
   end
 
+  def add_zipcode
+    @user = current_user
+    z = Zipcode.find(params[:id])
+    @user.zipcodes << z
+  end
+
+  def remove_zipcode
+    @user = current_user
+    @user.user_zipcodes.find_by(zipcode_id: params[:id]).destroy
+  end
+
   private
   
   def set_zipcode
