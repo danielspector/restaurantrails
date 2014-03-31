@@ -65,19 +65,23 @@
       <div class="row">
         <% if current_user == nil || !current_user.restaurants.include?(@restaurant) %>
           <div class="medium-6 columns">
-            <form method="POST" action="/restaurants/add_restaurant">
+<!--             <form method="POST" action="/restaurants/add_restaurant">
               <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>" />
               <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
               <button class="button">Add to Watchlist</button>
-            </form>
+            </form> -->
+            <%= link_to "Add to Watchlist", add_restaurant_path(@restaurant.id), remote: true, class: "button watchlist"%>
+            <div class="alert-box add_restaurant"><p> You have successfully subscribed!</p></div>
           </div>
         <% else %>
           <div class="medium-6 columns">
-            <form method="POST" action="/restaurants/remove_restaurant">
+            <!-- <form method="POST" action="/restaurants/remove_restaurant">
               <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>" />
-              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-              <button class="button alert">Remove from Watchlist</button>
-            </form>
+              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden"> -->
+              <!-- <button class="button alert">Remove from Watchlist</button> -->
+              <%= link_to "Remove from Watchlist", remove_restaurant_path(@restaurant.id), remote: true, class: "button watchlist" %>
+              <div class="alert-box remove_restaurant"><p> You have successfully unsubscribed!</p></div>
+            <!-- </form> -->
           </div>
         <% end %>
         <div class="medium-6 columns">

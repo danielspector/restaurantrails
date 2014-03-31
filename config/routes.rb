@@ -7,8 +7,8 @@ post '/pages/' => 'pages#search', as: 'search'
 
 get '/restaurants' => 'restaurants#index', as: 'restaurants'
 post 'restaurants' => 'restaurants#index'
-post "/restaurants/add_restaurant" => 'restaurants#add_restaurant'
-post "/restaurants/remove_restaurant" => 'restaurants#remove_restaurant'
+get "/restaurants/add_restaurant/:id" => 'restaurants#add_restaurant', as: 'add_restaurant'
+get "/restaurants/remove_restaurant/:id" => 'restaurants#remove_restaurant', as: 'remove_restaurant'
 get '/restaurants/:id' => 'restaurants#show', as: 'restaurant'
 
 get '/violations/:id' => 'violations#show', as: 'violation'

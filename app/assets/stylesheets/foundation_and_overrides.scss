@@ -1238,5 +1238,8 @@ $topbar-height: 50px;
 // $range-slider-handle-round: $global-rounded;
 // $range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -12%);
 // $range-slider-handle-cursor: pointer;
+.alert-box {
+  display: none;
+}
 
 @import 'foundation';
