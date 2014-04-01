@@ -1,8 +1,9 @@
 <div class="medium-7 columns">
-  <%= render :partial => 'users/errors' %>
   <%= link_to image_tag('active_200.png'), "/auth/facebook" %>
   <br><br>
   <h5>Or</h5>
   <h2>Sign In</h2>
+  <%= render :partial => 'users/errors' %>
   <%= render 'form' %>
+  <p>Or <%= link_to "Create an account", new_user_path %></p>
 </div>
