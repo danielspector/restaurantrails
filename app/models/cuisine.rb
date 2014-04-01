@@ -13,6 +13,10 @@ class Cuisine < ActiveRecord::Base
 
   before_save :slugify
 
+  def bad_restaurants
+    self.restaurants.select { |r| r.grade != "A" }
+  end
+
   def slugify
     self.slug = self.slug_arg
   end

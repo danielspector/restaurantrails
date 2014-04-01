@@ -1,6 +1,6 @@
 <div class="medium-12 columns">
   <h2><%= @cuisine.description %> Restaurant High Violators:</h2>
-  <% hash = @cuisine.restaurants.group_by {|r| r.zip} %>
+  <% hash = @cuisine.bad_restaurants.group_by {|r| r.zip} %>
   <% hash.sort.each do |k, v|%>
   <br/>
   <%= link_to k, zip_path(k) %>
