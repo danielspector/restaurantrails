@@ -47,7 +47,9 @@
     <div class="medium-6 small-block-grid-7 columns">
       <div class="_list rest_list">
         <h2><%= 
-          if @restaurant.grade == "B"
+          if @restaurant.grade == "A"
+            image_tag("a.jpg", class: "grade")
+          elsif @restaurant.grade == "B"
             image_tag("b.jpg", class: "grade")
           elsif @restaurant.grade == "C"
             image_tag("c.jpg", class: "grade")

@@ -9,6 +9,9 @@ class Zipcode < ActiveRecord::Base
   extend FriendlyId
   friendly_id :zip
 
+  def bad_restaurants
+    self.restaurants.select { |r| r.grade != "A" }
+  end
 
   def most_common_vios
     all_vios =  self.restaurants.collect do |r|

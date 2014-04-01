@@ -5,12 +5,14 @@
   <%= content_tag :h3, link_to(c.description, cuisine_path(c.id)) %>
 <% end %>
 <h3><%= 
-  if restaurant.grade == "B"
-    image_tag 'b.jpg'
+  if restaurant.grade == "A"
+    image_tag 'a.jpg', class: "grade"
+  elsif restaurant.grade == "B"
+    image_tag 'b.jpg', class: "grade"
   elsif restaurant.grade == "C"
-    image_tag 'c.jpg'
+    image_tag 'c.jpg', class: "grade"
   else
-    image_tag 'pending.jpg'
+    image_tag 'pending.jpg', class: "grade"
   end %>
   Violation points: <%= restaurant.score %>
 </h3>

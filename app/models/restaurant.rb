@@ -13,7 +13,7 @@ class Restaurant < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  # before_save :slugify
+  before_save :slugify
 
   def zipify
     self.zipcode_id = self.ziparg
@@ -30,7 +30,7 @@ class Restaurant < ActiveRecord::Base
   
   def slug_arg
     # puts "name: #{name}"
-    self.name.downcase.gsub(" ", "-").gsub("/", "-")
+    self.name.downcase.gsub(" ", "-").gsub("/", "-") + "-" + self.phone.to_i.to_s
   end
 
 
