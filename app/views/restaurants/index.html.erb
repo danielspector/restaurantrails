@@ -15,7 +15,7 @@
   <% if params[:q] %>
     <div class="search">
       <% if @found_restaurants == [] %>
-        <%= "Search returned 0 results" %>
+        <div data-alert class="alert-box success radius" style="display:block">Search returned 0 results</div>
       <% else %>
       <h2>Search Results</h2>
         <ol>
