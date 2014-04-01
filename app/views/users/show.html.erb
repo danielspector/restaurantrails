@@ -6,16 +6,16 @@
 <div class="row">
   <h2>Zipcode Watchlist</h2>
   <% if @user.zipcodes.length == 0 %>
-    <p>You have no zipcodes on your watchlist.</p>
+    <p class="zips_empty">You have no zipcodes on your watchlist.</p>
   <% else %>
     <ul>
       <% @user.zipcodes.each do |zip| %>
-      <div class="whole_zip">
-        <div class="medium-3 columns">
-        <%= link_to zip.zip, zip_path(zip), 'data-no-turbolink' => true %>
-        <%= button_to "✖", remove_zip_path(zip), remote: true, :class => "tiny alert round", :method => :get %>
+        <div class="whole_zip">
+          <%= content_tag "div", class: "medium-3 columns", data: {zips: current_user.zipcodes} do %>
+            <%= link_to zip.zip, zip_path(zip), 'data-no-turbolink' => true %>
+            <%= button_to "✖", remove_zip_path(zip), remote: true, :class => "tiny alert round", :method => :get %>
+          <% end %>
         </div>
-      </div>
       <% end %>
     </ul>
   <% end %>
