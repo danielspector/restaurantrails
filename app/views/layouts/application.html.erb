@@ -35,7 +35,13 @@
             <li><%= link_to image_tag('active_200.png'), "/auth/facebook" %></li>
             <li><%= link_to "Sign In", "/sessions/new" %></li>
           <% else %>
-            <li><a href="<%= user_path(current_user) %>">Hi, <%= current_user.name %>!</a></li>
+            <li><a href="<%= user_path(current_user) %>">
+              <%if current_user.image_url.length > 1  %>
+                <img src=<%= current_user.image_url %>>
+              <% else %>
+                Hi, <%= current_user.name %>!
+              <% end %>
+            </a></li>
           <% end %>
         </ul>
 

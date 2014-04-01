@@ -1,8 +1,11 @@
 <div class="medium-12 columns">
   <%= render 'errors' %>
+  <div class="small-4 columns small-centered">
+    <h2 class="centered"><%= @user.name %></h2>
+    <h4 class="centered"><%= @user.email %></h4>
+  </div>
+</div>
 
-  <h2 class="centered"><%= @user.name %></h2>
-  <h4 class="centered"><%= @user.email %></h4>
 <div class="row">
   <h3>Zipcode Watchlist</h3>
   <% if @user.zipcodes.length == 0 %>
