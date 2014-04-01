@@ -23,5 +23,9 @@ class Violation < ActiveRecord::Base
     end
     top
   end
+
+  def short_desc
+    "#{self.description.slice(0..60)}..."
+  end
 end
 
