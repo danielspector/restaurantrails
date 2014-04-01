@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :violations, through: :user_violations
 
   validates_presence_of :name, :email, :location, :facebook_id, :image_url
+
+  has_secure_password validations: false
   
   attr_reader :zipcode_list, :cuisine_list
 

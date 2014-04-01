@@ -23,7 +23,7 @@
   </div>
   <div class="medium-2 columns">
     <h3>Find by Name in <%= @zip.zip %></h3>
-    <% @zip.restaurants.sort {|a,b| a.name <=> b.name}.each do |r| %>
+    <% @restaurants.sort {|a,b| a.name <=> b.name}.each do |r| %>
       <%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %><br>
     <% end %>
   </div>
