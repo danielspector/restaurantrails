@@ -1,5 +1,6 @@
 $(document).ready(function() {
   $(document).on("click", ".tiny.alert.round", function(){
-    $(this).closest(".whole_zip").hide();
+    console.log("hit")
+    $(this).closest(".whole").hide();
   });
 });
