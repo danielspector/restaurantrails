@@ -8,7 +8,7 @@
   <div class="row">
     <% if current_user == nil || !current_user.violations.include?(@violation) %>
       <div class="medium-6 columns">
-        <%= link_to "Add to Watchlist", add_violation_path(@violation.id), remote: true, class: "button add_vio_watchlist"%>
+        <%= link_to "Add to Watchlist", add_violation_path(@violation.id), remote: true, class: "button add_vio_watchlist", data: {user: signed_in?} %>
       </div>
     
       <div class="medium-6 columns">
@@ -26,6 +26,7 @@
     <%= link_to "Violation Index", violations_path, :class => "button" %>
   </div>
   <div class="row">
+    <div class="alert-box please_log_in"><p> Please log in</p></div>
     <div class="alert-box add_violation"><p> You have successfully subscribed!</p></div>
     <div class="alert-box remove_violation"><p> You have successfully unsubscribed!</p></div>
   </div>

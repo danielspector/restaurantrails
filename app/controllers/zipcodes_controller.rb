@@ -24,7 +24,10 @@ class ZipcodesController < ApplicationController
   def add_zipcode
     @user = current_user
     z = Zipcode.find(params[:id])
-    @user.zipcodes << z
+    @user.zipcodes << z if @user != nil
+    respond_to do |format|
+      format.js
+    end  
   end
 
   def remove_zipcode
