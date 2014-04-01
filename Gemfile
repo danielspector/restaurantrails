@@ -42,8 +42,11 @@ gem 'omniauth-facebook'
 gem 'titleize'
 gem 'geocoder'
 gem 'thin'
-gem 'rspec'
-gem 'pry'
+
+
+gem 'rspec-rails', group: [:development, :test] 
+gem 'capybara', group: [:development, :test]
+gem 'pry', group: [:development, :test]
 gem 'friendly_id'
 gem 'bcrypt-ruby'
 gem 'foundation-rails'
