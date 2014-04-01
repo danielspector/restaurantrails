@@ -13,16 +13,11 @@ class ZipcodesController < ApplicationController
       if params[:q][:zip_cont].length != 5 || !Zipcode.find_by(zip: params[:q][:zip_cont])
         flash[:notice] = "Invalid zipcode or not in NYC!"
         params.delete(:q)
+        redirect_to zipcodes_path
       else
         @found_zip = @search.result
+        redirect_to "/zipcodes/#{@found_zip.first.zip}"
       end
-    end
-
-
-    if @found_zip == nil || @found_zip == []
-      render 'index'
-    else
-      redirect_to "/zipcodes/#{@found_zip.first.zip}"
     end
   end
 
