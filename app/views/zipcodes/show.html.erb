@@ -31,19 +31,39 @@
   <div class="medium-10 columns">
     <div>
       <div class="medium-6 columns">
-        <h3 class="most_common">Most Common Violations in <%= @zip.zip %></h3>
-        <ul>
-        <% @zip.most_common_vios.each do |v| %>
-        <li>Found in <span class="blue"><%= v[1] %></span> restaurants: <span class="blue"><%= link_to v[0].description, violation_path(v[0]) %></span></li>
+        <h3>Worst Scoring Restaurants in <%= @zip.zip %></h3><br/>
+        <% restaurant = @restaurants.first %>
+        <%= content_tag :h3, link_to(restaurant.name, restaurant_path(restaurant), 'data-no-turbolink' => true), id: restaurant.name %>
+        <%= content_tag :h4, restaurant.phone_num %>
+        <%= content_tag :h4, restaurant.address %>
+        <% restaurant.cuisines.each do |c| %>
+          <%= content_tag :h3, link_to(c.description, cuisine_path(c.id)) %>
         <% end %>
-        </ul>
+        <h3><%= 
+          if restaurant.grade == "A"
+            image_tag 'a.jpg', class: "grade"
+          elsif restaurant.grade == "B"
+            image_tag 'b.jpg', class: "grade"
+          elsif restaurant.grade == "C"
+            image_tag 'c.jpg', class: "grade"
+          else
+            image_tag 'pending.jpg', class: "grade"
+          end %>
+          Violation points: <%= restaurant.score %>
+        </h3>
       </div>
       <div class="medium-6 columns">
         <div id="map-canvas"></div>
       </div>
     </div>
     <div class="medium-12 columns">
-      <h3>Worst Scoring Restaurants in <%= @zip.zip %></h3><br/>
+      <ol>
+      <% restaurant.violations.each do |vio| %>
+        <%= content_tag :li, link_to(vio.description, violation_path(vio.id)) %>
+      <% end %>
+      </ol>
+      <br>
+      <% @restaurants.delete_at(0) %>
       <%= render @restaurants %>
     </div>
   </div>
