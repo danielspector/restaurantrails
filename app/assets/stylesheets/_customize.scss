@@ -19,3 +19,10 @@
 th {
   text-align: left;
 }
+
+div.scroll {
+  width:250px;
+  height:600px;
+  overflow:scroll;
+  margin: auto 0;
+}
