@@ -18,6 +18,21 @@ feature 'zipcodes' do
     expect(page).to have_content 'Most Common Violations in 10011'
     expect(page).to have_link 'Add to Watchlist'
   end
+
+describe 'zipcode add', :js => true do 
+  scenario 'cannot add zipcode if not logged in' do
+    visit '/zipcodes/10004'
+    click_link 'Add to Watchlist'
+    page.has_content?('Find by Name in 10004')
+    save_and_open_page
+    # expect(page).to have_css(".most_common")
+  end
+end
+
+  # scenario 'can get to restaurants by name' do
+  #   visit '/zipcodes/10010'
+  #   click_link
+  # end
 end
     # fill_in "Username", with: "asullivan210"
     # fill_in "Email", with: "ariellejsullivan@gmail.com"
