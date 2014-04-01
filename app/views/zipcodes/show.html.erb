@@ -1,46 +1,48 @@
 <div id="content-below-bar">
   <div class="row">
+    <h1 class="small-12 columns centered"><%= @zip.zip %></h1>
+    
     <% if current_user == nil || !current_user.zipcodes.include?(@zip) %>
-      <div class="medium-6 columns">
-        <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist", data: {user: signed_in?} %>
-      </div>
-      <div class="medium-6 columns">
-          <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist no_display" %>
-      </div>
+        <div class="small-2 columns"></div>
+        <div class="small-4 columns">
+          <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist", data: {user: signed_in?} %>
+        </div>
+        <div class="small-4 columns">
+            <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist no_display" %>
+        </div>
+        <div class="small-2 columns"></div>
+
     <% else %>
-      <div class="medium-6 columns">
+      <div class="small-2 columns"></div>
+      <div class="small-4 columns">
         <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist no_display"%>
       </div>
-      <div class="medium-6 columns">
+      <div class="small-4 columns">
           <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist" %>
       </div>
+      <div class="small-2 columns"></div>
     <% end %>
-    <%= link_to "Zipcode Index", zipcodes_path, :class => "button" %>
+    <div class="small-6 columns">
+      <%= link_to "Zipcode Index", zipcodes_path, :class => "button" %>
+    </div>
   </div>
   <div class="row">
     <div class="alert-box please_log_in"><p> Please log in</p></div>
     <div class="alert-box add_zip_show"><p> You have successfully subscribed!</p></div>
     <div class="alert-box remove_zip_show"><p> You have successfully unsubscribed!</p></div>
   </div>
-  <div class="medium-4 columns">
-    <h3>All Restaurants</h3>
-    <% @restaurants.sort {|a,b| a.name <=> b.name}.each do |r| %>
-      <%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %><br>
-    <% end %>
-  </div>
-  <div class="medium-6 columns">
-    <div id="map-canvas"></div>
-    <h3>Worst Scoring Restaurants</h3>
-  </div>
-  <div class='medium-2 columns'></div>
 
-  <div class="medium-12 columns">
-    <ol>
-    <% restaurant.violations.each do |vio| %>
-      <%= content_tag :li, link_to(vio.description, violation_path(vio.id)) %>
-    <% end %>
-    </ol>
-    <br>
-    <%= render @restaurants %>
-  </div>
+    <div class="empty small-3 columns .inline">
+      <h3>All Restaurants</h3>
+      <% @restaurants.sort {|a,b| a.name <=> b.name}.each do |r| %>
+        <%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %><br>
+      <% end %>
+    </div>
+
+    <div class="small-9 columns .inline">
+      <div id="map-canvas"></div>
+      <h3 class="centered">Worst Scoring Restaurants</h3>
+      <%= render @restaurants %>
+      <br>
+    </div>
 </div>
