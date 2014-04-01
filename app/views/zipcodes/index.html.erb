@@ -1,8 +1,10 @@
-<div class="medium-7 columns">
-  <%= render :partial => 'users/errors' %>
+<div class="large-6 columns row collapse search_form">
   <%= search_form_for @search do |f| %>
-    <%#= f.label :zip_cont, "Zip Code:" %>
-    <%= f.number_field :zip_cont, placeholder: "Zip Code..." %>
-    <button class="button">Search Zip Code</button>
+    <div class="small-8 columns">
+      <%= f.text_field :zip_cont, placeholder: "Zip Code..." %>
+    </div>
+    <div class="small-4 columns">
+      <%= f.submit 'Search Zip Code', :class => "button postfix" %>
+    </div>
   <% end %>
 </div>

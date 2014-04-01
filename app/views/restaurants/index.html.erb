@@ -1,14 +1,11 @@
-<div class="medium-7 columns">
-  <% if flash[:notice] %>
-    <div data-alert class="alert-box warning round">
-      <%= flash[:notice] %>
-    </div>
-    <% flash.delete(:notice) %>
-  <% end %>
+<div class="medium-7 columns search_form">
   <%= search_form_for @search do |f| %>
-    <%#= f.label :name_cont, "Name Contains:" %>
+    <div class="small-8 columns">
     <%= f.text_field :name_cont, :placeholder => "Name Contains..." %>
-    <button class="button">Search Restaurants</button>
+    </div>
+    <div class="small-4 columns">
+    <%= f.submit 'Search Restaurants', :class => "button postfix" %>  
+    </div>
   <% end %>
 </div>
 
