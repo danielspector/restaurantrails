@@ -10,7 +10,7 @@
   <% else %>
     <ul>
       <% @user.zipcodes.each do |zip| %>
-        <div class="whole_zip">
+        <div class="whole">
           <%= content_tag "div", class: "row large-4 columns", data: {zips: current_user.zipcodes} do %>
             <%= link_to zip.zip, zip_path(zip), 'data-no-turbolink' => true, :class => "large-3 columns" %>
             <%= link_to "✖", remove_zip_path(zip), remote: true, :class => "tiny alert round button large-1 columns", :method => :get %>
@@ -27,7 +27,7 @@
   <% else %>
   <ul>
     <% @user.restaurants.each do |restaurant| %>
-    <div class="whole_rest">
+    <div class="whole">
         <li><%= link_to restaurant.name, restaurant_path(restaurant), 'data-no-turbolink' => true %>
       <%= button_to "✖", remove_restaurant_from_profile_path(restaurant.id), remote: true, :class => "tiny alert round", :method => :get %></li>
       <% end %>
@@ -42,7 +42,7 @@
   <% else %>
   <ul>
     <% @user.violations.each do |violation| %>
-    <div class="whole_vio">
+    <div class="whole">
         <li><%= link_to violation.vio_code, violation_path(violation), 'data-no-turbolink' => true %>
       <%= button_to "✖", remove_violation_from_profile_path(violation.id), remote: true, :class => "tiny alert round", :method => :get %></li>
       <% end %>
