@@ -17,5 +17,13 @@
 //= require_tree .
 
 
-
+$(document).ready(function() {
+  $(document).on("click", "a:contains('Add to Watchlist')", function(){
+    if( $(this).data("user") == false){
+      $(".alert-box.please_log_in").fadeIn(800, function(){
+        $(".alert-box.please_log_in").fadeOut(200);
+      });
+    }
+  });
+});
 
