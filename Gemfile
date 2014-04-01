@@ -46,6 +46,7 @@ gem 'thin'
 
 gem 'rspec-rails', group: [:development, :test] 
 gem 'capybara', group: [:development, :test]
+gem 'selenium-webdriver', group: [:development, :test]
 gem 'pry', group: [:development, :test]
 gem 'friendly_id'
 gem 'bcrypt-ruby'

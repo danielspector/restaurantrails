@@ -14,7 +14,7 @@ feature 'zipcodes' do
   scenario "can find zipcodes" do
     visit '/zipcodes'
     fill_in 'q[zip_cont]', with: "10011"
-    click_button 'Search Zip Code'
+    click_button 'Search'
     expect(page).to have_content 'Most Common Violations in 10011'
     expect(page).to have_link 'Add to Watchlist'
   end
@@ -25,7 +25,7 @@ describe 'zipcode add', :js => true do
     click_link 'Add to Watchlist'
     page.has_content?('Find by Name in 10004')
     save_and_open_page
-    # expect(page).to have_css(".most_common")
+    find(".please_log_in").visible?
   end
 end
 
