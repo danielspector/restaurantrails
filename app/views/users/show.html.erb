@@ -9,11 +9,9 @@
     <p class="empty">Empty</p>
   <% else %>
       <% @user.zipcodes.each do |zip| %>
-        <div class="whole row large-4 columns">
-          <%= content_tag "div", class: "row large-4 columns", data: {zips: current_user.zipcodes} do %>
+        <div class="whole row ">
             <%= link_to zip.zip, zip_path(zip), 'data-no-turbolink' => true, :class => "large-3 columns" %>
-            <%= link_to "✖", remove_zip_path(zip), remote: true, :class => "tiny alert round large-1 columns", :method => :get %>
-          <% end %>
+            <%= link_to "✖", remove_zip_path(zip), remote: true, :class => "tiny alert round large-9 columns", :method => :get %>
         </div>
         <br>
       <% end %>
@@ -26,9 +24,9 @@
    <p class="empty">Empty</p>
   <% else %>
     <% @user.violations.each do |violation| %>
-    <div class="whole row large-4 columns">
+    <div class="whole row">
       <%= link_to violation.vio_code, violation_path(violation), 'data-no-turbolink' => true, :class => "large-3 columns" %>
-      <%= link_to "✖", remove_violation_from_profile_path(violation.id), remote: true, :class => "tiny alert round large-1 columns", :method => :get %>
+      <%= link_to "✖", remove_violation_from_profile_path(violation.id), remote: true, :class => "tiny alert round large-9 columns", :method => :get %>
     </div>
     <br>
       <% end %>
@@ -40,9 +38,9 @@
    <p class="empty">Empty</p>
   <% else %>
     <% @user.restaurants.each do |restaurant| %>
-    <div class="whole row large-6 columns">
-      <%= link_to restaurant.name, restaurant_path(restaurant), 'data-no-turbolink' => true , :class => "medium-10 columns" %>
-      <%= link_to "✖", remove_restaurant_from_profile_path(restaurant.id), remote: true, :class => "tiny alert round large-1 columns", :method => :get %>
+    <div class="whole row">
+      <%= link_to restaurant.name, restaurant_path(restaurant), 'data-no-turbolink' => true , :class => "large-3 columns" %>
+      <%= link_to "✖", remove_restaurant_from_profile_path(restaurant.id), remote: true, :class => "tiny alert round large-9 columns", :method => :get %>
     </div>
     <br>
     <% end %>
