@@ -1,17 +1,25 @@
 class SessionsController < ApplicationController
 
   def new
+    @user = User.new
   end
 
   def create
-    @user = User.find_by(facebook_id: session_params[:facebook_id].to_i)
-    if @user
+    if env["omniauth.auth"]
+      @user = User.find_by(facebook_id: facebook_params[:facebook_id].to_i)
+      if !@user
+        @user = User.create(facebook_params)
+        @user.save
+      end
       session[:user_id] = @user.id
       redirect_to @user
     else
-      @user = User.new(session_params)
-      session[:user_id] = nil
-      render 'users/new'
+      if @user = User.find_by(email: regular_params[:email]).try(:authenticate, regular_params[:password])
+        session[:user_id] = @user.id
+        redirect_to @user
+      else
+        render 'new'
+      end
     end
   end
 
@@ -22,11 +30,15 @@ class SessionsController < ApplicationController
 
   private
 
-  def session_params
+  def facebook_params
     result = ActionController::Parameters.new(request.env["omniauth.auth"]).permit!.require(:info).permit(:name, :email, :location, :image)
     result[:image_url] = result.delete(:image) if result[:image]
     result[:facebook_id] = env["omniauth.auth"][:uid].to_i
     result
+  end
+
+  def regular_params
+    params.require(:user).permit(:email, :password)
   end
 
 end

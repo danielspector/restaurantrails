@@ -5,6 +5,12 @@
   <%= f.label :email %>
   <%= f.text_field :email, value: @user.email %>
   <br>
+  <%= f.label :password %>
+  <%= f.text_field :password, value: @user.password %>
+  <br>
+  <%= f.label :password_confirmation %>
+  <%= f.text_field :password_confirmation, value: @user.password_confirmation %>
+  <br>    
   <label for="zipcode_list">Add your favorite zipcode(s), separated by commas.</label>
   <%= f.text_field :zipcode_list, value: @user.zipcodes_as_a_string %>
   <br>
