@@ -33,15 +33,9 @@
           <li<%= yield(:cuis_nav) if content_for?(:cuis_nav) %>><%= link_to "Cuisine List", cuisines_path %></li>
           <% if !signed_in? %>
             <li><%= link_to image_tag('active_200.png'), "/auth/facebook" %></li>
+            <li><%= link_to "Sign In", "/sessions/new" %></li>
           <% else %>
-
-            <li class="has-dropdown">  
-              <a href="#">Hi, <%= current_user.name %>!</a>
-              <ul class="dropdown">
-                <li><%= link_to "Log Out", "/signout" %></li>
-                <li><%= link_to "My Profile", user_path(current_user)%></li>
-              </ul>
-            </li>
+            <li><a href="<%= user_path(current_user) %>">Hi, <%= current_user.name %>!</a></li>
           <% end %>
         </ul>
 
