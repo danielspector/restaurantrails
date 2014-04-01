@@ -15,34 +15,32 @@ feature 'zipcodes' do
     visit '/zipcodes'
     fill_in 'q[zip_cont]', with: "10011"
     click_button 'Search'
-    expect(page).to have_content 'Most Common Violations in 10011'
+    expect(page).to have_content '10011'
     expect(page).to have_link 'Add to Watchlist'
   end
 
-describe 'zipcode add', :js => true do 
-  scenario 'cannot add zipcode if not logged in' do
-    visit '/zipcodes/10004'
-    click_link 'Add to Watchlist'
-    page.has_content?('Find by Name in 10004')
-    save_and_open_page
-    find(".please_log_in").visible?
+  # scenario 'cannot add zipcode if not logged in' do
+  #   visit '/zipcodes/10004'
+  #   click_link 'Add to Watchlist'
+  #   page.has_content?('Find by Name in 10004')
+  #   save_and_open_page
+  #   find(".please_log_in").visible?
+  # end
+
+  scenario 'can get to restaurants by name' do
+    visit '/zipcodes/10010'
+    first(".empty a").click
+    page.has_content?('Violation points')
+  end
+
+  scenario 'add to watchlist', :js => true do
+    visit '/zipcodes/10010'
+    find(".add_zip_watchlist").should be_visible
+    click_link('Add to Watchlist')
+    page.should have_link('Remove from Watchlist')
+    find(".remove_zip_watchlist").click
   end
 end
-
-  # scenario 'can get to restaurants by name' do
-  #   visit '/zipcodes/10010'
-  #   click_link
-  # end
-end
-    # fill_in "Username", with: "asullivan210"
-    # fill_in "Email", with: "ariellejsullivan@gmail.com"
-    # fill_in "Password", with: "asdfasdf"
-    # click_button('Sign in')
-
-    
-    # visit '/'
-    # page.has_button?('Log out')
-
 
 # feature "profile" do
 #   before :each do
@@ -60,6 +58,6 @@ end
 #   scenario "edit profile" do
 #     visit '/users/1'
 #     click_button('Edit Your Profile')
-#     fill_in :zipcode_list, with: "asullivan210"
+#     
 #   end
 # end
