@@ -1,15 +1,36 @@
 require 'spec_helper'
 
-feature "User" do
-  context "show" do
-    it "should display name" do
-      page.should have_content(@user.name)
-    end
+feature "sign in" do 
+  scenario "can sign in successfully" do
+    visit '/'
+    click_button('Log in')
+    fill_in "Username", with: "asullivan210"
+    fill_in "Email", with: "ariellejsullivan@gmail.com"
+    fill_in "Password", with: "asdfasdf"
+    click_button('Sign in')
 
-    it "should display favorite restaurants" do
-      page.should have_content @user.restaurants
-    end
+    page.has_content?('Hi')
+    page.has_button?('Log out')
   end
+
+  scenario "edit profile" do
+
+  end
+end
+
+feature "sign in" do 
+  scenario "can sign in successfully" do
+    visit '/'
+    click_button('Please log in or sign up')
+    fill_in "Username", with: "asullivan210"
+    fill_in "Email", with: "ariellejsullivan@gmail.com"
+    fill_in "Password", with: "asdfasdf"
+    click_button('Sign in')
+
+    page.has_content?('Welcome')
+    page.has_button?('Log out')
+  end
+end
 
   context "log in" do
     fill_in(:task_name, with: task_name)
@@ -37,8 +58,5 @@ feature "User" do
       expect(page).to have_content('Log Out')
     end
     
-  end
-
-  context "edit" do
   end
 end
