@@ -6,10 +6,10 @@
 <div class="row">
   <h3>Zipcode Watchlist</h3>
   <% if @user.zipcodes.length == 0 %>
-    <p class="empty">You have no zipcodes on your watchlist.</p>
+    <p class="empty">Empty</p>
   <% else %>
       <% @user.zipcodes.each do |zip| %>
-        <div class="whole">
+        <div class="whole row large-4 columns">
           <%= content_tag "div", class: "row large-4 columns", data: {zips: current_user.zipcodes} do %>
             <%= link_to zip.zip, zip_path(zip), 'data-no-turbolink' => true, :class => "large-3 columns" %>
             <%= link_to "✖", remove_zip_path(zip), remote: true, :class => "tiny alert round large-1 columns", :method => :get %>
@@ -23,7 +23,7 @@
 <div class="row">
   <h3>Violation Watchlist</h3>
   <% if @user.violations.length == 0 %>
-   <p class="empty">You have no violations on your watchlist.</p>
+   <p class="empty">Empty</p>
   <% else %>
     <% @user.violations.each do |violation| %>
     <div class="whole row large-4 columns">
@@ -36,7 +36,7 @@
 <div class="row">
   <h3>Restaurant Watchlist</h3>
   <% if @user.restaurants.length == 0 %>
-   <p class="empty">You have no restaurants on your watchlist.</p>
+   <p class="empty">Empty</p>
   <% else %>
     <% @user.restaurants.each do |restaurant| %>
     <div class="whole row large-6 columns">
