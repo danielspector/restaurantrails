@@ -30,6 +30,7 @@
       <%= link_to violation.vio_code, violation_path(violation), 'data-no-turbolink' => true, :class => "large-3 columns" %>
       <%= link_to "✖", remove_violation_from_profile_path(violation.id), remote: true, :class => "tiny alert round large-1 columns", :method => :get %>
     </div>
+    <br>
       <% end %>
   <% end %>
 </div>
@@ -43,7 +44,8 @@
       <%= link_to restaurant.name, restaurant_path(restaurant), 'data-no-turbolink' => true , :class => "medium-10 columns" %>
       <%= link_to "✖", remove_restaurant_from_profile_path(restaurant.id), remote: true, :class => "tiny alert round large-1 columns", :method => :get %>
     </div>
-      <% end %>
+    <br>
+    <% end %>
   <% end %>
 </div>
 <br>
