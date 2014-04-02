@@ -37,8 +37,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to new_user_path, notice:  "Sorry to see you go :'("
+    current_user.destroy
+    redirect_to '/signout'
   end
 
   def remove_violation_from_profile

@@ -5,4 +5,12 @@ $(document).ready(function() {
     }
     $(this).closest(".whole").remove();
   });
+  // $(document).on("click", "a:contains('Delete my account')", function(){
+  //   function confirmation() {
+  //     var check = confirm('Are you sure?');
+  //     if(check){window.location.href = 'http://example.com';}
+  //     else{window.location.href = 'http://example.com';}
+  //   }
+  //   confirmation();
+  // });
 });

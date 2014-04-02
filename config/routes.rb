@@ -40,7 +40,7 @@ patch "/users/:id" => 'users#update'
 
 get "/users/:id" => 'users#show', as: "user"
 get "/users/remove_zip/:id" => 'users#remove_zip', as: "remove_zip"
-delete "/users/:id" => 'users#destroy'
+delete "/users/:id" => 'users#destroy', as: "destroy_user"
 
 root 'pages#index'
 

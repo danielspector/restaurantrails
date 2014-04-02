@@ -8,3 +8,11 @@
     <%= link_to "Log Out", "/signout", :class => "button alert" %>
   <% end %>
 </div>
+<div class="medium-12 columns" id="logo-content">
+  <% if flash[:notice] %>
+    <div data-alert class="alert-box success radius" style="display:block">
+      <%= flash[:notice] %>
+    </div>
+    <% flash.clear %>
+  <% end %>
+</div>
