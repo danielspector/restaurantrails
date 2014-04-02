@@ -48,8 +48,8 @@ feature "while logged in" do
   before :each do 
     User.create(email: "b@test.com", name: "Bob", password: "test", password_confirmation: "test")
     visit '/'
-    click_link 'Sign in'
-    fill_in 'Email', with: 'Bob'
+    click_link 'Sign In'
+    fill_in 'Email', with: 'b@test.com'
     fill_in 'Password', with: 'test'
     click_button('Submit')
     page.should have_content('Bob')
