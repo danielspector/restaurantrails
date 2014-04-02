@@ -1,9 +1,11 @@
 if( $(".signed_in?").data("user") == false){
+  console.log("log in");
   $(".alert-box.please_log_in").fadeIn(800, function(){
     $(".alert-box.please_log_in").fadeOut(200);
   });
 }
 else{
+  console.log("should show");
   $(".add_zip_watchlist").hide();
   $(".remove_zip_watchlist").show();
 

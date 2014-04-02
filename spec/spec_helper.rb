@@ -27,6 +27,11 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
 require 'selenium-webdriver'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
+
+# then, whenever you need to clean the DB
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
@@ -45,7 +50,9 @@ RSpec.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
-
+  config.before(:each) do
+    DatabaseCleaner.clean
+  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -63,5 +70,5 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  # config.order = "random"
 end

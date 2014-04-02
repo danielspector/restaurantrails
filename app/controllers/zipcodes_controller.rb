@@ -3,6 +3,7 @@ class ZipcodesController < ApplicationController
    
   def show
     @zip = Zipcode.find_by(zip: params[:id])
+    binding.pry
     @worst = @zip.restaurants.order(score: :desc).limit(3)
     @restaurants = @zip.bad_restaurants.sort {|a,b| b.score <=> a.score}
   end
