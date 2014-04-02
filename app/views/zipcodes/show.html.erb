@@ -32,17 +32,17 @@
     <div class="alert-box remove_zip_show"><p> You have successfully unsubscribed!</p></div>
   </div>
 
-    <div class="empty small-3 columns .inline">
-      <h3>All Restaurants</h3>
-      <% @restaurants.sort {|a,b| a.name <=> b.name}.each do |r| %>
-        <%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %><br>
-      <% end %>
-    </div>
+  <div class="small-3 columns empty">
+    <h3>All Restaurants</h3>
+    <% @restaurants.sort {|a,b| a.name <=> b.name}.each do |r| %>
+      <%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %><br>
+    <% end %>
+  </div>
 
-    <div class="small-9 columns .inline">
-      <div id="map-canvas"></div>
-      <h3 class="centered">Worst Scoring Restaurants</h3>
-      <%= render @restaurants %>
-      <br>
-    </div>
+  <div class="small-9 columns">
+    <div id="map-canvas"></div>
+    <h3 class="centered">Worst Scoring Restaurants</h3>
+    <%= render @restaurants %>
+    <br>
+  </div>
 </div>
