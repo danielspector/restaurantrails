@@ -6,8 +6,24 @@ feature "sign in" do
     within ".right" do
       click_link("", :href => '/auth/facebook')
     end
-    page.has_content?('Sign up!')
+    page.has_content?('Facebook Login')
   end
+
+  scenario "shows error when signin blank" do
+    visit '/'
+    click_link "", :href => '/sessions/new'
+    page.should have_no_content("Incorrect login")
+    click_button('Submit')
+    page.should have_content("Incorrect login")
+  end
+
+  scenario "shows error when incorrect password" do
+    visit '/'
+    click_link "", :href => '/sessions/new'
+    page.should have_no_content("Incorrect")
+    click_button('Submit')
+    page.should have_content("Incorrect")
+  end  
 end
 
 feature 'zipcodes' do
