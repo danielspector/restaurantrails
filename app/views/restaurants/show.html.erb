@@ -44,7 +44,7 @@
 </head>
 <body>
   <div id="content-below-bar">
-    <div class="medium-6 small-block-grid-7 columns">
+    <div class="medium-6 columns">
       <div class="_list rest_list">
         <h2><%= 
           if @restaurant.grade == "A"
@@ -58,7 +58,7 @@
           end %>
           Violation points: <%= @restaurant.score %>
         </h2>
-
+        <p>Last grade date: <%= @restaurant.date.to_formatted_s(:long) %></p>
         <ol>
           <% @restaurant.violations.each do |vio| %>
             <%= content_tag :li, link_to(vio.description, violation_path(vio.id)) %>
@@ -68,17 +68,17 @@
       <div class="row">
         <% if current_user == nil || !current_user.restaurants.include?(@restaurant) %>
           <%= content_tag "div", class: "medium-6 columns" do %>
-            <%= link_to "Add to Watchlist", add_restaurant_path(@restaurant.id), remote: true, class: "button add_rest_watchlist", data: {user: signed_in?} %>
+            <%= link_to "Add to Watchlist", add_restaurant_path(@restaurant.id), remote: true, class: "button add_rest_watchlist", data: {user: signed_in?}, style: "display: block" %>
           <% end %>
           <div class="medium-6 columns">
-              <%= link_to "Remove from Watchlist", remove_restaurant_path(@restaurant.id), remote: true, class: "button remove_rest_watchlist no_display" %>
+              <%= link_to "Remove from Watchlist", remove_restaurant_path(@restaurant.id), remote: true, class: "button remove_rest_watchlist no_display alert" %>
           </div>
         <% else %>
           <div class="medium-6 columns">
             <%= link_to "Add to Watchlist", add_restaurant_path(@restaurant.id), remote: true, class: "button add_rest_watchlist no_display"%>
           </div>
           <div class="medium-6 columns">
-              <%= link_to "Remove from Watchlist", remove_restaurant_path(@restaurant.id), remote: true, class: "button remove_rest_watchlist" %>
+              <%= link_to "Remove from Watchlist", remove_restaurant_path(@restaurant.id), remote: true, class: "button remove_rest_watchlist alert", style: "display: block" %>
           </div>
         <% end %>
         <div class="medium-6 columns">
@@ -87,8 +87,8 @@
       </div>
       <div class="row">
         <div class="alert-box please_log_in"><p> Please log in</p></div>
-        <div class="alert-box add_restaurant"><p> You have successfully subscribed!</p></div>
-        <div class="alert-box remove_restaurant"><p> You have successfully unsubscribed!</p></div>
+        <div class="alert-box add_restaurant centered"> Successfully added to watchlist!</div>
+        <div class="alert-box remove_restaurant centered"> Successfully removed from watchlist!</div>
       </div>
     </div>
     <div class="medium-5 small-block-grid-5 columns">

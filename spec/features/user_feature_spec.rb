@@ -18,7 +18,7 @@ feature "sign in" do
     if page.has_content?('This app')
       click_on('Okay')
     end
-    page.has_content?('Restaurant Watchlist')
+    page.should have_content('Restaurant Watchlist')
   end
 
   scenario "shows error when signin blank" do
@@ -62,6 +62,14 @@ feature "sign in" do
 
   scenario "can sign in successfully w/o facebook" do
     visit '/sessions/new'
+    click_on 'Create an account'
+    fill_in 'Name', with: "Adam"
+    fill_in 'Email', with: "a@a.com"
+    fill_in 'Password', with: "1234"
+    fill_in 'Password confirmation', with: "1234"
+    click_button('Submit')
+    visit '/signout'
+    visit '/sessions/new'    
     fill_in 'Email', with: "a@a.com"
     fill_in 'Password', with: "1234"
     click_on 'Submit'
@@ -71,6 +79,14 @@ feature "sign in" do
 
   scenario "can sign out successfully" do
     visit '/sessions/new'
+    click_on 'Create an account'
+    fill_in 'Name', with: "Adam"
+    fill_in 'Email', with: "a@a.com"
+    fill_in 'Password', with: "1234"
+    fill_in 'Password confirmation', with: "1234"
+    click_button('Submit')
+    visit '/signout'
+    visit '/sessions/new'  
     fill_in 'Email', with: "a@a.com"
     fill_in 'Password', with: "1234"
     click_on 'Submit'
