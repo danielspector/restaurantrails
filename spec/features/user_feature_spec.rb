@@ -35,12 +35,11 @@ feature 'zipcodes' do
 
   scenario 'add to watchlist', :js => true do
     visit '/zipcodes/10010'
-    binding.pry
     page.should have_no_css(".please_log_in")
     find(".add_zip_watchlist").should be_visible
     click_link('Add to Watchlist')
     find(".please_log_in").should be_visible
-    page.should have_link('Remove from Watchlist')
+    page.should_not have_link('Remove from Watchlist')
   end
 end
 

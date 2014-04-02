@@ -1,6 +1,14 @@
-$(".add_zip_watchlist").hide();
-$(".remove_zip_watchlist").show();
 
-$(".add_zip_show").fadeIn(900, function(){
-  $(".add_zip_show").fadeOut(500)
-});
+if( $(".signed_in?").data("user") == false){
+  $(".alert-box.please_log_in").fadeIn(800, function(){
+    $(".alert-box.please_log_in").fadeOut(200);
+  });
+}
+else{
+  $(".add_zip_watchlist").hide();
+  $(".remove_zip_watchlist").show();
+
+  $(".add_zip_show").fadeIn(900, function(){
+    $(".add_zip_show").fadeOut(500)
+  });
+}
