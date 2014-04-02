@@ -31,7 +31,7 @@ class ZipcodesController < ApplicationController
 
   def remove_zipcode
     @user = current_user
-    @user.user_zipcodes.find_by(zipcode_id: params[:id]).destroy
+    @user.user_zipcodes.find_by(zipcode_id: params[:id]).destroy  
   end
 
   private
