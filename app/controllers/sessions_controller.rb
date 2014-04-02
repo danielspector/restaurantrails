@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       @user = User.find_by(facebook_id: facebook_params[:facebook_id].to_i)
       if !@user
         @user = User.create(facebook_params)
+        create_dummy_pw
         @user.save
       end
       session[:user_id] = @user.id
@@ -40,6 +41,12 @@ class SessionsController < ApplicationController
 
   def regular_params
     params.require(:user).permit(:email, :password)
+  end
+
+  def create_dummy_pw
+    pw = Time.now.to_s
+    @user.password = pw
+    @user.password_confirmation = pw
   end
 
 end
