@@ -22,6 +22,7 @@ feature "while logged in" do
   scenario "add to watchlist", :js => true do
     visit '/zipcodes'
     find("input[name='q[zip_cont]']")
+    fill_in "q[zip_cont]", with: "10004"
     within "div.small-4" do
       click_button('Search')
     end
@@ -32,7 +33,10 @@ feature "while logged in" do
   #   find(".add_zip_show").should be_visible
   #   page.should have_link('Remove from Watchlist')
   end
-
+  scenario "get to zipcode", :js => true do
+    visit '/zipcodes/10004'
+    page.should have_content('10004')
+  end
   # scenario 'zip gets added to profile' do
   #   visit '/'
   #   click_link 'My Profile'
