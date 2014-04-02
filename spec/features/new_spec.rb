@@ -66,7 +66,6 @@ feature "while logged in" do
     @user.zipcodes << @zipcode
     expect(@user.zipcodes).to include(@zipcode)
     visit '/zipcodes/10004'
-    save_and_open_page
     click_link 'Remove from Watchlist'
     visit '/'
     click_link 'My Profile'
@@ -98,7 +97,12 @@ feature "while logged in" do
   end
 
   scenario 'can\'t search bad zip', js: true do
-    visit '/zipcodes/'
+    visit '/zipcodes'
+    page.should have_no_css('div.alert-box')
+    fill_in 'q[zip_cont]', with: '10000000'
+    click_button 'Search'
+    page.should have_css('div.alert-box')
+    page.should have_no_content('Restaurants')
   end
 
   scenario 'can delete account' do
