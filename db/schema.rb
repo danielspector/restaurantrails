@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401173246) do
+ActiveRecord::Schema.define(version: 20140402150039) do
 
   create_table "cuisine_zipcodes", force: true do |t|
     t.integer "cuisine_id"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20140401173246) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "facebook_id"
+    t.decimal  "facebook_id"
     t.string   "location"
     t.string   "image_url"
     t.string   "password_digest"
