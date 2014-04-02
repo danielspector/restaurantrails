@@ -16,6 +16,9 @@ feature "while logged in" do
     fill_in 'Email', with: "julie@test.com"
     fill_in 'Password', with: 'testing'
     click_button('Submit')
+  end
+
+  scenario 'sign in works' do
     page.should have_content('Julie')
   end
 
@@ -26,22 +29,32 @@ feature "while logged in" do
     within "div.small-4" do
       click_button('Search')
     end
-    save_and_open_page
-    # click_link('Add to Watchlist')
-
-  #   find(".please_log_in").should_not be_visible
-  #   find(".add_zip_show").should be_visible
-  #   page.should have_link('Remove from Watchlist')
+    click_link('Add to Watchlist')
+    find(".please_log_in").should_not be_visible
+    find(".add_zip_show").should be_visible
+    page.should have_link('Remove from Watchlist')
   end
-  scenario "get to zipcode", :js => true do
+
+  scenario 'zipcode in profile' do
+    @user.zipcodes << @zipcode
+    visit '/'
+    click_link 'My Profile'
+    page.should have_content('10004')
+  end
+
+  scenario "get to zipcode through url", :js => true do
     visit '/zipcodes/10004'
     page.should have_content('10004')
   end
-  # scenario 'zip gets added to profile' do
-  #   visit '/'
-  #   click_link 'My Profile'
-  #   page.should have_content('10004')
-  # end
+
+  scenario 'remove from watchlist profile' do
+    @user.zipcodes << @zipcode
+    visit '/zipcodes/10004'
+    click_link('Remove from Watchlist')
+    visit '/'
+    click_link 'My Profile'
+    page.should_not have_content('10004')
+  end
 
   # scenario 'zip gets taken off profile' do
   #   visit '/'
