@@ -5,14 +5,14 @@
     <% if current_user == nil || !current_user.zipcodes.include?(@zip) %>
         
         <div class="small-4 columns small-offset-2">
-          <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist signed_in?", data: {user: signed_in?} %>
+          <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist signed_in", data: {user: current_user} %>
         </div>
         <div class="small-4 columns small-offset-2">
             <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist no_display" %>
         </div>
     <% else %>
       <div class="small-4 columns small-offset-2">
-        <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist no_display"%>
+        <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist no_display", data: {user: "hi"} %>
       </div>
       <div class="small-4 columns small-offset-2">
           <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist" %>

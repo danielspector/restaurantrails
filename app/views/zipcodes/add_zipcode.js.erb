@@ -1,4 +1,4 @@
-if( $(".signed_in?").data("user") == false){
+if( $("a:contains('Add to Watchlist')").data("user") == null){
   console.log("log in");
   $(".alert-box.please_log_in").fadeIn(800, function(){
     $(".alert-box.please_log_in").fadeOut(200);

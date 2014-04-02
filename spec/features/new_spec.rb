@@ -16,13 +16,16 @@ feature "while logged in" do
     fill_in 'Email', with: "julie@test.com"
     fill_in 'Password', with: 'testing'
     click_button('Submit')
-  end
-
-  scenario 'sign in works' do
     page.should have_content('Julie')
   end
 
   scenario "add to watchlist", :js => true do
+    visit '/'
+    click_link 'Sign In'
+    fill_in 'Email', with: "julie@test.com"
+    fill_in 'Password', with: 'testing'
+    click_button('Submit')
+
     visit '/zipcodes'
     find("input[name='q[zip_cont]']")
     fill_in "q[zip_cont]", with: "10004"
@@ -30,12 +33,18 @@ feature "while logged in" do
       click_button('Search')
     end
     click_link('Add to Watchlist')
-    find(".please_log_in").should_not be_visible
+    page.should have_no_css(".please_log_in")
     find(".add_zip_show").should be_visible
     page.should have_link('Remove from Watchlist')
   end
 
   scenario 'zipcode in profile' do
+    visit '/'
+    click_link 'Sign In'
+    fill_in 'Email', with: "julie@test.com"
+    fill_in 'Password', with: 'testing'
+    click_button('Submit')
+
     @user.zipcodes << @zipcode
     visit '/'
     click_link 'My Profile'
@@ -48,6 +57,12 @@ feature "while logged in" do
   end
 
   scenario 'remove from watchlist profile' do
+    visit '/'
+    click_link 'Sign In'
+    fill_in 'Email', with: "julie@test.com"
+    fill_in 'Password', with: 'testing'
+    click_button('Submit')
+
     @user.zipcodes << @zipcode
     visit '/zipcodes/10004'
     click_link('Remove from Watchlist')
