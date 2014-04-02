@@ -20,27 +20,31 @@ feature "while logged in" do
   end
 
   scenario "add to watchlist", :js => true do
-    visit '/zipcodes/10004'
-    binding.pry
+    visit '/zipcodes'
+    find("input[name='q[zip_cont]']")
+    within "div.small-4" do
+      click_button('Search')
+    end
+    save_and_open_page
+    # click_link('Add to Watchlist')
 
-    click_link('Add to Watchlist')
   #   find(".please_log_in").should_not be_visible
   #   find(".add_zip_show").should be_visible
   #   page.should have_link('Remove from Watchlist')
   end
 
-  scenario 'zip gets added to profile' do
-    visit '/'
-    click_link 'My Profile'
-    page.should have_content('10004')
-  end
+  # scenario 'zip gets added to profile' do
+  #   visit '/'
+  #   click_link 'My Profile'
+  #   page.should have_content('10004')
+  # end
 
-  scenario 'zip gets taken off profile' do
-    visit '/'
-    click_link 'My Profile'
-    page.should have_content('10004')
-    click_link '✖'
-    page.shoud_not have_content('10004')
-    expect(@user.zipcodes).not_to include?(@zipcode)
-  end
+  # scenario 'zip gets taken off profile' do
+  #   visit '/'
+  #   click_link 'My Profile'
+  #   page.should have_content('10004')
+  #   click_link '✖'
+  #   page.shoud_not have_content('10004')
+  #   expect(@user.zipcodes).not_to include?(@zipcode)
+  # end
 end

@@ -3,24 +3,20 @@
     <h1 class="small-12 columns centered"><%= @zip.zip %></h1>
     
     <% if current_user == nil || !current_user.zipcodes.include?(@zip) %>
-        <div class="small-2 columns"></div>
-        <div class="small-4 columns">
+        
+        <div class="small-4 columns small-offset-2">
           <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist signed_in?", data: {user: signed_in?} %>
         </div>
-        <div class="small-4 columns">
+        <div class="small-4 columns small-offset-2">
             <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist no_display" %>
         </div>
-        <div class="small-2 columns"></div>
-
     <% else %>
-      <div class="small-2 columns"></div>
-      <div class="small-4 columns">
+      <div class="small-4 columns small-offset-2">
         <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist no_display"%>
       </div>
-      <div class="small-4 columns">
+      <div class="small-4 columns small-offset-2">
           <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist" %>
       </div>
-      <div class="small-2 columns"></div>
     <% end %>
     <div class="small-6 columns">
       <%= link_to "Zipcode Index", zipcodes_path, :class => "button" %>
@@ -38,10 +34,9 @@
       <%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %><br>
     <% end %>
   </div>
-
+ <div id="map-canvas" class="small-4 columns small-offset-2"></div>
+ <h3 class="small-4 columns small-offset-2 centered">   Worst Scoring Restaurants</h3>
   <div class="small-9 columns">
-    <div id="map-canvas"></div>
-    <h3 class="centered">Worst Scoring Restaurants</h3>
     <%= render @restaurants %>
     <br>
   </div>
