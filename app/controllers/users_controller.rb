@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   def remove_zip
-    current_user.user_zipcodes.find_by(zipcode_id: Zipcode.find_by(zip: params[:id]).id).destroy
+    current_user.user_zipcodes.find_by(zipcode_id: Zipcode.find_by(zip: params[:id]).id)
   end
 
   private
