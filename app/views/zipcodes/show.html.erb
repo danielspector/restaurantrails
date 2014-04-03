@@ -18,9 +18,10 @@
           <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist alert", style: "display: block" %>
       </div>
     <% end %>
-    <div class="small-6 columns">
-      <%= link_to "Zipcode Index", zipcodes_path, :class => "button" %>
+    <div class="small-4 columns">
+      <%= link_to "Zipcode Index", zipcodes_path, :class => "button", style: "display: block" %>
     </div>
+    <div class="small-4 columns"></div>
   </div>
   <div class="row">
     <div class="alert-box please_log_in"><p> Please log in</p></div>
