@@ -80,6 +80,7 @@ GEM
     friendly_id (5.0.3)
       activerecord (>= 4.0.0)
     geocoder (1.1.9)
+    google-analytics-rails (0.0.5)
     hashie (2.0.5)
     hike (1.2.3)
     i18n (0.6.9)
@@ -220,6 +221,7 @@ DEPENDENCIES
   foundation-rails
   friendly_id
   geocoder
+  google-analytics-rails
   jbuilder (~> 1.2)
   jquery-rails
   omniauth-facebook

@@ -55,6 +55,7 @@ gem 'foundation-rails'
 gem 'database_cleaner'
 # gem 'bootstrap-sass', '~> 3.1.1'
 gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
+gem 'google-analytics-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.7'
