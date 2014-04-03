@@ -7,7 +7,7 @@ if( $("a:contains('Add to Watchlist')").data("user") == null){
 else{
   console.log("should show");
   $(".add_zip_watchlist").hide();
-  $(".remove_zip_watchlist").show();
+  $(".remove_zip_watchlist").css( "display", "block").show();
 
   $(".add_zip_show").fadeIn(900, function(){
     $(".add_zip_show").fadeOut(500)

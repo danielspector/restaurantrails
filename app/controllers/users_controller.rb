@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, :only => [:show, :edit, :update, :destroy]
   
   def new
+    redirect_if_wrong_profile if signed_in?
     @user = User.new
   end
 
@@ -18,12 +19,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @cuisines = Cuisine.all
+    redirect_if_wrong_profile
   end
 
   def update
     @user.update(user_params)
-
     if @user.save
       flash[:notice] = "User successfully edited"
       redirect_to @user
@@ -34,6 +34,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_if_wrong_profile
   end
 
   def destroy
@@ -60,7 +61,26 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+  end
+
+  def is_correct_user?
+    current_user ? current_user.id == params[:id].to_i : false
+  end
+
+  def redirect_if_wrong_profile
+    if !is_correct_user?
+      if signed_in?
+        redirect_to current_user
+      else
+        redirect_to new_session_path
+      end
+    end    
   end
 
 end
+
+
+
+
+

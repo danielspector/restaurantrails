@@ -5,17 +5,17 @@
     <% if current_user == nil || !current_user.zipcodes.include?(@zip) %>
         
         <div class="small-4 columns small-offset-2">
-          <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist signed_in", data: {user: current_user} %>
+          <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist signed_in", data: {user: current_user}, style: "display: block" %>
         </div>
         <div class="small-4 columns small-offset-2">
-            <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist no_display" %>
+            <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist no_display alert" %>
         </div>
     <% else %>
       <div class="small-4 columns small-offset-2">
         <%= link_to "Add to Watchlist", add_zipcode_show_path(@zip.id), remote: true, class: "button add_zip_watchlist no_display", data: {user: "hi"} %>
       </div>
       <div class="small-4 columns small-offset-2">
-          <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist" %>
+          <%= link_to "Remove from Watchlist", remove_zipcode_show_path(@zip.id), remote: true, class: "button remove_zip_watchlist alert", style: "display: block" %>
       </div>
     <% end %>
     <div class="small-6 columns">
@@ -24,8 +24,8 @@
   </div>
   <div class="row">
     <div class="alert-box please_log_in"><p> Please log in</p></div>
-    <div class="alert-box add_zip_show"><p> You have successfully subscribed!</p></div>
-    <div class="alert-box remove_zip_show"><p> You have successfully unsubscribed!</p></div>
+    <div class="alert-box add_zip_show centered"> Successfully added to watchlist!</div>
+    <div class="alert-box remove_zip_show centered"> Successfully removed from watchlist!</div>
   </div>
 
   <div class="small-3 columns empty">
