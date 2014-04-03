@@ -366,7 +366,7 @@ CREATE TABLE users (
     email character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    facebook_id integer,
+    facebook_id numeric,
     location character varying(255),
     image_url character varying(255),
     password_digest character varying(255)
@@ -101443,6 +101443,7 @@ COPY schema_migrations (version) FROM stdin;
 20140328155407
 20140401132803
 20140401173246
+20140402150039
 \.
 
 
@@ -101473,7 +101474,7 @@ COPY user_restaurants (id, user_id, restaurant_id) FROM stdin;
 -- Name: user_restaurants_id_seq; Type: SEQUENCE SET; Schema: public; Owner: caguthrie
 --
 
-SELECT pg_catalog.setval('user_restaurants_id_seq', 3, true);
+SELECT pg_catalog.setval('user_restaurants_id_seq', 55, true);
 
 
 --
@@ -101508,7 +101509,7 @@ COPY user_zipcodes (id, user_id, zipcode_id) FROM stdin;
 -- Name: user_zipcodes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: caguthrie
 --
 
-SELECT pg_catalog.setval('user_zipcodes_id_seq', 35, true);
+SELECT pg_catalog.setval('user_zipcodes_id_seq', 52, true);
 
 
 --
@@ -101516,8 +101517,10 @@ SELECT pg_catalog.setval('user_zipcodes_id_seq', 35, true);
 --
 
 COPY users (id, name, email, created_at, updated_at, facebook_id, location, image_url, password_digest) FROM stdin;
-4	Chris Guthrie	hf2015@gmail.com	2014-03-28 18:57:29.036154	2014-03-28 18:57:29.036154	3312213	New York, New York	http://graph.facebook.com/3312213/picture	\N
-5	chris	c@c.com	2014-04-01 17:51:48.361099	2014-04-01 19:45:06.019867	\N			$2a$10$CiJ3eSuPcSE/cmsEK7byh.hhRjZbTLhIsICzyOjxK71MeGltZAqTe
+7	Mark Amhacajbfhgc Okelolaberg	mark_unfgsud_okelolaberg@tfbnw.net	2014-04-02 15:02:36.448441	2014-04-02 15:02:36.448441	100008131026873.0	\N	http://graph.facebook.com/100008131026873/picture	$2a$10$.ypkA7izvfPE8nKIiBr7b.79XLW3Ze21su5GXScYZ6x45rftOgsNC
+8	Chris	c@c.com	2014-04-02 15:04:52.280003	2014-04-02 15:04:52.280003	\N			$2a$10$EdDDXYr5gE/7fc5lPhF9HOO1HtkI5cGaQILDry8sonmBCSEsp3Y3K
+9	Bob	b@b.com	2014-04-02 15:29:01.089205	2014-04-02 15:29:01.089205	\N			$2a$10$I3C6CliTBAiXLO.XJU1druAscCFCwjE5lS.Xyo6NpBwgG2ZpNcr4G
+11	Chris Guthrie	hf2015@gmail.com	2014-04-02 20:00:08.725199	2014-04-02 20:00:08.725199	3312213.0	New York, New York	http://graph.facebook.com/3312213/picture	$2a$10$/fSgmV9qU7zixHiaAajF.uygD4Y4f4Hlwvb2oCftaOBig7noNaYyC
 \.
 
 
@@ -101525,7 +101528,7 @@ COPY users (id, name, email, created_at, updated_at, facebook_id, location, imag
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: caguthrie
 --
 
-SELECT pg_catalog.setval('users_id_seq', 5, true);
+SELECT pg_catalog.setval('users_id_seq', 11, true);
 
 
 --
