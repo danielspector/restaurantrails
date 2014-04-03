@@ -1,17 +1,14 @@
 class ViolationsController < ApplicationController
   before_action :set_violation, only: [:show]
+  before_action :set_user, only: [:add_violation, :remove_violation]
 
   def show
-    # if @violation && session[:error] = true
-    #   redirect_to(pages_path)
-    # end
   end
 
   def index
     @violations = Violation.all
     @search = Violation.search(params[:q])
     @found_violations = @search.result
-    # @most_common = Violation.most_common
   end
 
   def add_violation
@@ -29,6 +26,10 @@ class ViolationsController < ApplicationController
   
   def set_violation
     @violation = Violation.find(params[:id]) 
+  end
+
+  def set_user
+    @user = current_user
   end
   
 end
