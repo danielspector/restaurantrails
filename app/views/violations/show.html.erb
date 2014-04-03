@@ -1,38 +1,39 @@
 <div class="medium-12 columns">
-  <h2>Violation <%= @violation.vio_code %></h2>
-  <h3><%= @violation.description %></h3>
+  <h2 class="centered">Violation <%= @violation.vio_code %></h2>
+  <h3 class="centered"><%= @violation.description %></h3>
   <% if @violation.critical_vio == true %>
-    <h1 class="red">This violation is critical</h1>
+    <h3 class="red centered">This violation is critical</h3>
   <% end %>
   <br>
   <div class="row">
     <% if current_user == nil || !current_user.violations.include?(@violation) %>
-      <div class="medium-6 columns">
+      <div class="small-4 columns small-offset-2">
         <%= link_to "Add to Watchlist", add_violation_path(@violation.id), remote: true, class: "button add_vio_watchlist", data: {user: signed_in?}, style: "display: block" %>
       </div>
-    
-      <div class="medium-6 columns">
+      <div class="small-4 columns small-offset-2">
           <%= link_to "Remove from Watchlist", remove_violation_path(@violation.id), remote: true, class: "button remove_vio_watchlist no_display alert" %>
       </div>
     <% else %>
-      <div class="medium-6 columns">
+      <div class="small-4 columns small-offset-2">
         <%= link_to "Add to Watchlist", add_violation_path(@violation.id), remote: true, class: "button add_vio_watchlist no_display"%>
       </div>
-    
-      <div class="medium-6 columns">
+      <div class="small-4 columns small-offset-2">
           <%= link_to "Remove from Watchlist", remove_violation_path(@violation.id), remote: true, class: "button remove_vio_watchlist alert", style: "display: block" %>
       </div>
     <% end %>
-    <%= link_to "Violation Index", violations_path, :class => "button" %>
+    <div class="small-3 columns">
+      <%= link_to "Violation Index", violations_path, :class => "button" %>
+    </div>
+    <div class="small-1 columns"></div>
   </div>
   <div class="row">
     <div class="alert-box please_log_in centered alert">Please log in</div>
-    <div class="alert-box add_violation centered">You have successfully subscribed!</div>
-    <div class="alert-box remove_violation centered">You have successfully unsubscribed!</div>
+    <div class="alert-box add_violation centered">Successfully added to watchlist!</div>
+    <div class="alert-box remove_violation centered">Successfully removed from watchlist!</div>
   </div>
   <br>
   <% if @violation.restaurants.length == 0 %>
-    <h2>There are no restaurants with this violation.</h2>
+    <h3 class= "centered">There are no restaurants with this violation.</h3>
   <% else %>
     <h2>Restaurants with this violation</h2>
     <% hash = @violation.restaurants.group_by {|r| r.zip} %>
