@@ -1,4 +1,4 @@
-<div class="small-12 columns row search_form">
+<div class="small-12 columns row collapse search_form">
   <%= render 'errors' %>
   <h3 class="centered">Search by Zip Code</h3>
   <%= search_form_for @search do |f| %>
@@ -6,7 +6,7 @@
       <%= f.text_field :zip_cont, placeholder: "Zip Code..." %>
     </div>
     <div class="small-4 columns">
-      <%= f.submit 'Search', :class => "button postfix" %>
+      <%= f.submit 'Search', :class => "button" %>
     </div>
   <% end %>
 </div>
