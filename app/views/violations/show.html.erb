@@ -8,11 +8,11 @@
   <div class="row">
     <% if current_user == nil || !current_user.violations.include?(@violation) %>
       <div class="medium-6 columns">
-        <%= link_to "Add to Watchlist", add_violation_path(@violation.id), remote: true, class: "button add_vio_watchlist", data: {user: signed_in?} %>
+        <%= link_to "Add to Watchlist", add_violation_path(@violation.id), remote: true, class: "button add_vio_watchlist", data: {user: signed_in?}, style: "display: block" %>
       </div>
     
       <div class="medium-6 columns">
-          <%= link_to "Remove from Watchlist", remove_violation_path(@violation.id), remote: true, class: "button remove_vio_watchlist no_display" %>
+          <%= link_to "Remove from Watchlist", remove_violation_path(@violation.id), remote: true, class: "button remove_vio_watchlist no_display alert" %>
       </div>
     <% else %>
       <div class="medium-6 columns">
@@ -20,15 +20,15 @@
       </div>
     
       <div class="medium-6 columns">
-          <%= link_to "Remove from Watchlist", remove_violation_path(@violation.id), remote: true, class: "button remove_vio_watchlist" %>
+          <%= link_to "Remove from Watchlist", remove_violation_path(@violation.id), remote: true, class: "button remove_vio_watchlist alert", style: "display: block" %>
       </div>
     <% end %>
     <%= link_to "Violation Index", violations_path, :class => "button" %>
   </div>
   <div class="row">
-    <div class="alert-box please_log_in"><p> Please log in</p></div>
-    <div class="alert-box add_violation"><p> You have successfully subscribed!</p></div>
-    <div class="alert-box remove_violation"><p> You have successfully unsubscribed!</p></div>
+    <div class="alert-box please_log_in centered alert">Please log in</div>
+    <div class="alert-box add_violation centered">You have successfully subscribed!</div>
+    <div class="alert-box remove_violation centered">You have successfully unsubscribed!</div>
   </div>
   <br>
   <% if @violation.restaurants.length == 0 %>
