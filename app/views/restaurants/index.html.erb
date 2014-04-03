@@ -1,4 +1,4 @@
-<div class="small-12 columns row collapse search_form">
+<div class="small-12 columns row search_form">
   <h3 class="centered">Search by Restaurant</h3>
   <%= search_form_for @search do |f| %>
     <div class="small-8 columns">
@@ -20,7 +20,7 @@
       <h2>Search Results</h2>
         <ol>
         <% @found_restaurants.each do |r| %>
-          <li><%= link_to r.name, restaurant_path(r), 'data-no-turbolink' => true %>
+          <li><%= link_to r.name, restaurant_path(r) %>
             <ul><li><%= r.address%></li></ul>
           </li>
         <% end %>
