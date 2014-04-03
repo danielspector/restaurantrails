@@ -1,5 +1,5 @@
-<h3 class=" centered large-4 columns large-centered">Cuisine Index</h3>
-<div class="scroll large-4 columns large-centered">
+<h3 class=" centered small-4 columns small-centered">Cuisine Index</h3>
+<div class="scroll small-4 columns small-centered">
   <ul >
     <% @cuisines.sort { |a,b| a.description <=> b.description }.each do |c| %>
       <li><%= link_to c.description, cuisine_path(c) %></li>
