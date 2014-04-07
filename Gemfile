@@ -45,21 +45,24 @@ gem 'thin'
 
 group :developement, :test do 
   gem 'rspec-rails'
-  gem 'capybara'
   gem 'selenium-webdriver'
   gem 'pry'
+
 end
 
 group :test do
   gem 'sqlite3'
   gem 'simplecov'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem "factory_girl_rails", "~> 4.2.1"
 end
 
 
 gem 'friendly_id'
 gem 'bcrypt-ruby'
 gem 'foundation-rails'
-gem 'database_cleaner'
+
 # gem 'bootstrap-sass', '~> 3.1.1'
 gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
 gem 'google-analytics-rails'
