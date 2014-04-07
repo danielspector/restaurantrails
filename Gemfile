@@ -43,11 +43,19 @@ gem 'geocoder'
 gem 'thin'
 
 
-gem 'rspec-rails', group: [:development, :test] 
-gem 'capybara', group: [:development, :test]
-gem 'sqlite3', group: [:development, :test]
-gem 'selenium-webdriver', group: [:development, :test]
-gem 'pry', group: [:development, :test]
+group :developement, :test do 
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'pry'
+end
+
+group :test do
+  gem 'sqlite3'
+  gem 'simplecov'
+end
+
+
 gem 'friendly_id'
 gem 'bcrypt-ruby'
 gem 'foundation-rails'

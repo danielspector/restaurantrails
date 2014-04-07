@@ -28,6 +28,8 @@ require 'rspec/autorun'
 require 'capybara/rails'
 require 'selenium-webdriver'
 require 'database_cleaner'
+require 'simplecov'
+SimpleCov.start 'rails'
 
 DatabaseCleaner.strategy = :truncation
 

@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140402150039) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "cuisine_zipcodes", force: true do |t|
     t.integer "cuisine_id"
     t.integer "zipcode_id"
@@ -27,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140402150039) do
     t.string "slug"
   end
 
-  add_index "cuisines", ["slug"], name: "index_cuisines_on_slug", using: :btree
+  add_index "cuisines", ["slug"], name: "index_cuisines_on_slug"
 
   create_table "restaurant_cuisines", force: true do |t|
     t.integer "cuisine_id"
@@ -53,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140402150039) do
     t.date    "date"
   end
 
-  add_index "restaurants", ["slug"], name: "index_restaurants_on_slug", using: :btree
+  add_index "restaurants", ["slug"], name: "index_restaurants_on_slug"
 
   create_table "user_cuisines", force: true do |t|
     t.integer "user_id"
