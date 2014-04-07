@@ -33,7 +33,6 @@ class Restaurant < ActiveRecord::Base
     self.name.downcase.gsub(" ", "-").gsub("/", "-") + "-" + self.phone.to_i.to_s
   end
 
-
   def phone_num
     self.phone.to_s.strip.split('').insert(3, "-").insert(7, "-").join()[0,12]
   end
