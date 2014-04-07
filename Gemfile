@@ -42,7 +42,6 @@ gem 'titleize'
 gem 'geocoder'
 gem 'thin'
 
-
 group :developement, :test do 
   gem 'rspec-rails'
   gem 'selenium-webdriver'
